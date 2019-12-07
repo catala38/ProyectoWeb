@@ -1,0 +1,95 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <div class="panel panel-primary" style="width:50%; margin:auto">
+        <br><br>
+        <div class="panel-heading">Registro de Programas</div>
+        <br>
+        <div class="panel-body">
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Facultad: </label>
+                </div>
+                <div class="col-sm-10">
+                    <select class="form-control" (change)="mostrar()" id="referencia" name="referencia">
+                        <option selected="selected">
+                            Seleccione...
+                        </option>
+                        <option *ngFor="let p of facultades" [value]="p.facultadId">{{p.nombre}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Programa: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="programa.nombrePro" formControlName="nombrePro" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.nombrePro.errors }" placeholder="digite nombre"
+                        type="text" />
+                    <div *ngIf="submitted && f.nombrePro.errors" class="invalid-feedback">
+                        <div *ngIf="f.nombrePro.errors.required">Titulo es requerido</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Duracion Semestral: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="programa.duracionSementral" formControlName="duracionSementral"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.duracionSementral.errors }"
+                        placeholder="digite duracionSementral" type="number" />
+                    <div *ngIf="submitted && f.duracionSementral.errors" class="invalid-feedback">
+                        <div *ngIf="f.duracionSementral.errors.required">Titulo es requerido</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Horario: </label>
+                </div>
+                <div class="col-sm-10">
+                    <select [(ngModel)]="programa.horario" class="form-control" formControlName="horario"
+                        [ngClass]="{ 'is-invalid': submitted && f.horario.errors }">
+                        <option value="">Seleccionar</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Normal-Especial">Normal-Especial</option>
+                    </select>
+                    <div *ngIf="submitted && f.horario.errors" class="invalid-feedback">
+                        <div *ngIf="f.horario.errors.required">Por favor, Seleccione su horario</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Metodologia: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="programa.metodologia" formControlName="metodologia" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.metodologia.errors }" placeholder="digite metodologia"
+                        type="text" />
+                    <div *ngIf="submitted && f.metodologia.errors" class="invalid-feedback">
+                        <div *ngIf="f.metodologia.errors.required">Titulo es requerido</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-3"> </div>
+                <div class="col-sm-8">
+                    <button class="btn btn-primary"  style="background: rgb(101, 141, 20)">Agregar</button>
+                    <button class="btn btn-secondary" type="reset" (click)="onReset()">Limpiar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,64 @@
+<style>
+    .separar {
+        padding: 10px;
+    }
+
+    .panel-heading {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .btn {
+        float: right;
+    }
+</style>
+
+
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <br><br>
+    <div class="panel-heading">Registro de Asignaturas</div>
+    <br>
+    <div class="panel-body">
+
+        <div class="row separar">
+            <div class="col-lg-6">
+                <label>Eje Tematico: </label>
+                <input [(ngModel)]="ejeTematico.nombre" class="form-control" placeholder="Digite eje" type="text"
+                     class="form-control">
+
+                <label>Tema Docencia Directa: </label>
+                <input [(ngModel)]="tema.nombre" class="form-control" placeholder="Digite tema" type="text" 
+                    class="form-control">
+                    <br><br>
+                    <button (click)="addTema()" class="btn btn-primary">Agregar</button>
+
+                
+            </div>
+
+
+       
+            <div class="col-lg-6">
+
+            
+                    <table class="table">
+                            <thead class="thead-striped">
+                                <tr>
+                                    <th scope="col">Ejes</th>
+                                    <th scope="col">Temas</th>
+                                </tr>
+                            </thead>
+                           <tr >
+                                <td [attr.rowspan]="temas.length+1">{{ejeTematico.nombre}}</td>
+                           </tr>
+                                   
+                                    <tr *ngFor="let e of temas">    
+                                    <td  >{{e.nombre}}</td>
+                                    </tr>
+                        </table>
+                        <button (click)="addEje()" class="btn btn-primary">registrar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

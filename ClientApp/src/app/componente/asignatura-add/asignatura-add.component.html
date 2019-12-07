@@ -1,0 +1,182 @@
+<style>
+    .separar {
+        padding: 10px;
+    }
+
+    .panel-heading {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .btn {
+        float: right;
+    }
+</style>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <div class="panel panel-primary" style="width:50%; margin:auto">
+        <br><br>
+        <div class="panel-heading">Registro de Asignaturas</div>
+        <br>
+        <div class="panel-body">
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Programa: </label>
+                </div>
+                <div class="col-sm-10">
+                    <select class="form-control" (change)="mostrar()" id="referencia" name="referencia">
+                        <option selected="selected">
+                            Seleccione...
+                        </option>
+                        <option *ngFor="let p of programas" [value]="p.programaId">{{p.nombrePro}}</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Codigo de Asignatura: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="asignatura.AsignaturaId" formControlName="AsignaturaId" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.AsignaturaId.errors }" placeholder="digite nombre"
+                        type="text" />
+                    <div *ngIf="submitted && f.AsignaturaId.errors" class="invalid-feedback">
+                        <div *ngIf="f.AsignaturaId.errors.required">Codigo es requerido</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Nombre: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="asignatura.Nombre" formControlName="Nombre" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.Nombre.errors }" placeholder="digite nombre"
+                        type="text" />
+                    <div *ngIf="submitted && f.Nombre.errors" class="invalid-feedback">
+                        <div *ngIf="f.Nombre.errors.required">Nombre es requerido</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Nº de creditos: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="asignatura.Ncreditos" formControlName="Ncreditos" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.Ncreditos.errors }" placeholder="digite nombre "
+                        type="text" />
+                    <div *ngIf="submitted && f.Ncreditos.errors" class="invalid-feedback">
+                        <div *ngIf="f.Ncreditos.errors.required">Numero de creditos es requerido</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Pre-Requisitos: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="asignatura.PreRequisitos" formControlName="PreRequisitos" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.PreRequisitos.errors }"
+                        placeholder="Digite Pre-Requisitos" type="text" />
+                    <div *ngIf="submitted && f.PreRequisitos.errors" class="invalid-feedback">
+                        <div *ngIf="f.PreRequisitos.errors.required">PreRequisitos es requerido</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Co-Requisitos: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="asignatura.CoRequisitos" formControlName="CoRequisitos" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.CoRequisitos.errors }"
+                        placeholder="Digite Co-Requisitos" type="text" />
+                    <div *ngIf="submitted && f.CoRequisitos.errors" class="invalid-feedback">
+                        <div *ngIf="f.CoRequisitos.errors.required">Co-Requisitos es requerido</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Tipo: </label>
+                </div>
+                <div class="col-sm-10">
+                    <select [(ngModel)]="asignatura.Tipo" class="form-control" formControlName="Tipo"
+                        [ngClass]="{ 'is-invalid': submitted && f.Tipo.errors }">
+                              <option value="">Seleccionar</option>
+                        <option value="Teorico">Teorico</option>
+                        <option value="Pracico">Pracico</option>
+                        <option value="Teorico-Practico">Teorico-Practico</option>
+                    </select>
+                        <div *ngIf="submitted && f.Tipo.errors" class="invalid-feedback">
+                            <div *ngIf="f.Tipo.errors.required">Por favor, Seleccione un tipo</div>
+                        </div>
+                </div>
+            </div>
+
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Naturaleza de Asignatura:</label>
+                </div>
+                <div class="col-sm-10">
+                    <select [(ngModel)]="asignatura.NatAsignatura1" class="form-control"
+                        formControlName="NatAsignatura1"
+                        [ngClass]="{ 'is-invalid': submitted && f.NatAsignatura1.errors }">
+                         <option value="">Seleccionar</option>
+                        <option value="Habilitable">Habilitable</option>
+                        <option value="No-Habilitable">No-Habilitable</option>
+                    </select>
+                    <div *ngIf="submitted && f.NatAsignatura1.errors" class="invalid-feedback">
+                        <div *ngIf="f.NatAsignatura1.errors.required">Por favor, Seleccione un tipo</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-10">
+                    <select [(ngModel)]="asignatura.NatAsignatura2" class="form-control"
+                        formControlName="NatAsignatura2"
+                        [ngClass]="{ 'is-invalid': submitted && f.NatAsignatura2.errors }">
+                         <option value="">Seleccionar</option>
+                         <option value="Homologable">Homologable</option>
+                         <option value="No-Homologable">No-Homologable</option> 
+                    </select>
+                    <div *ngIf="submitted && f.NatAsignatura2.errors" class="invalid-feedback">
+                        <div *ngIf="f.NatAsignatura2.errors.required">Por favor, Seleccione un tipo</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-10">
+                    <button (click)="add()" class="btn btn-primary">Agregar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

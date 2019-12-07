@@ -1,0 +1,100 @@
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <div class="panel-body">
+
+        <div *ngIf="docente">
+            <br> <br>
+            <div>
+                <h1 class="h2">Detalle de Docente</h1>
+            </div>
+            <br><br>
+            <div class="form-group">
+                <label style="color: rgb(0, 0, 0); font-size: 18px; font-weight: bold;">Identificacion:
+                    {{docente.identificacion}}
+                </label>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Programa: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="docente.programa.nombrePro" class="form-control" placeholder="digite programa"
+                        type="text" readonly/>
+                </div>
+            </div>
+            <br>
+
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Primer Nombre: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="docente.primerNombre" class="form-control" placeholder="Digite primer nombre"
+                        type="text" required class="form-control">
+                </div>
+            </div>
+
+            <br>
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Segundo Nombre: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="docente.segundoNombre" class="form-control" placeholder="Digite segundo nombre"
+                        type="text" required class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Primer Apellido: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="docente.primerApellido" class="form-control"
+                        placeholder="Digite primer Apellido" type="text" required class="form-control">
+                </div>
+            </div>
+
+            <br>
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Segundo Apellido: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="docente.segundoApellido" class="form-control"
+                        placeholder="Digite segundo Apellido" type="text" required class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Correo: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="docente.correo" class="form-control" placeholder="Digite correo" type="text"
+                        required class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Telefono: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="docente.telefono" class="form-control" placeholder="Digite telefono" type="text"
+                        required class="form-control">
+
+                </div>
+            </div>
+
+            <br><br>
+            <div class="form-group">
+                <button (click)="update()" class="btn btn-success"
+                    style="background: rgb(101, 141, 20)">Actualizar</button>
+
+                <button (click)="delete()" class="btn btn-success" style="background: rgb(148, 9, 9)">Eliminar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

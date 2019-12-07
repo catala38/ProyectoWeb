@@ -1,0 +1,75 @@
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <div class="panel-body">
+
+        <div *ngIf="docente">
+            <br> <br>
+            <div>
+                <h1 class="h2">Detalle de Docente</h1>
+            </div>
+
+            <div class="form-group">
+                <label style="color: rgb(0, 0, 0); font-size: 18px; font-weight: bold;">Identificacion:
+                    {{docente.identificacion}}
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Programa:
+                    <input [(ngModel)]="docente.programa.nombrePro" class="form-control" placeholder="digite programa"
+                        type="text" />
+                </label>
+            </div>
+
+            
+            <div class="form-group">
+                <label>Primer Nombre:
+                    <input [(ngModel)]="docente.primerNombre" class="form-control" placeholder="digite primer Nombre"
+                        type="text" />
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Segundo Nombre:
+                    <input [(ngModel)]="docente.segundoNombre" class="form-control" placeholder="digite segundo Nombre"
+                        type="text" />
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Primer Apellido:
+                    <input [(ngModel)]="docente.primerApellido" class="form-control"
+                        placeholder="digite primer Apellido" type="text" />
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Segundo Apellido:
+                    <input [(ngModel)]="docente.segundoApellido" class="form-control"
+                        placeholder="digite segundo  Apellido" type="text" />
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Correo:
+                    <input [(ngModel)]="docente.correo" class="form-control" placeholder="digite correo" type="text" />
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Telefono:
+                    <input [(ngModel)]="docente.telefono" class="form-control" placeholder="digite telefono"
+                        type="text" />
+                </label>
+            </div>
+
+
+            <div class="form-group">
+                <button (click)="update()" class="btn btn-success"
+                    style="background: rgb(101, 141, 20)">Actualizar</button>
+
+                <button (click)="delete()" class="btn btn-success" style="background: rgb(148, 9, 9)">Eliminar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

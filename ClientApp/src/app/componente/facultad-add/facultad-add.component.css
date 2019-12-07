@@ -1,0 +1,13 @@
+.separar {
+    padding: 5px;
+}
+
+.btn {
+    float: right
+}
+
+.panel-heading {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}

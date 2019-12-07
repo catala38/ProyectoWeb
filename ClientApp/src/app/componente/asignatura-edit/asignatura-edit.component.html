@@ -1,0 +1,136 @@
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <div class="panel-body">
+
+        <div *ngIf="asignatura">
+            <br> <br>
+            <div>
+                <h1 class="h2">Detalle de Asignatura</h1>
+            </div>
+            <br><br>
+            <div class="form-group">
+                <label style="color: rgb(0, 0, 0); font-size: 18px; font-weight: bold;">Codigo:
+                    {{asignatura.asignaturaId}}
+                </label>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Programa:</label>
+                </div>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="asignatura.programa.nombrePro" class="form-control" placeholder="digite titulo"
+                        type="text" readonly />
+                </div>
+            </div>
+<br>
+
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Nombre: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="asignatura.nombre" class="form-control" placeholder="Digite nombre asignatura"
+                        type="text">
+                </div>
+            </div>
+
+            <br>
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Nº de creditos: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="asignatura.ncreditos" class="form-control"
+                        placeholder="Digite nombre asignatura" type="text">
+                </div>
+            </div>
+<br>
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Pre-Requisitos: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="asignatura.preRequisitos" class="form-control"
+                        placeholder="Digite Pre-Requisitos" type="text">
+                </div>
+            </div>
+<br>
+
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Co-Requisitos: </label>
+                </div>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="asignatura.coRequisitos" class="form-control" placeholder="Digite Co-Requisitos"
+                        type="text">
+                </div>
+            </div>
+
+<br>
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Tipo:</label>
+                </div>
+                <div class="col-sm-8">
+                    <label style="font-weight: bold;"> {{asignatura.tipo}}</label>
+                    <select class="form-control" id="Tipo" name="Tipo" [(ngModel)]="asignatura.Tipo">
+                        <option selected="selected">
+                            Seleccione...
+                        </option>
+                        <option value="Teorico">Teorico</option>
+                        <option value="Pracico">Pracico</option>
+                        <option value="Teorico-Practico">Teorico-Practico</option>
+
+                    </select>
+                </div>
+            </div>
+            <br>
+
+
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Naturaleza: </label>
+                </div>
+                <div class="col-sm-8">
+                        <label style="font-weight: bold;">{{asignatura.natAsignatura1}} </label>
+                    <select class="form-control" id="Naturaleza1" name="Naturaleza1"
+                        [(ngModel)]="asignatura.NatAsignatura1">
+                        <option selected="selected">
+                            Seleccione...
+                        </option>
+                        <option value="Habilitable">Habilitable</option>
+                        <option value="No-Habilitable">No-Habilitable</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-8">
+                        <label style="font-weight: bold;">{{asignatura.natAsignatura1}} </label>
+
+                    <select class="form-control" id="Naturaleza2" name="Naturaleza2"
+                        [(ngModel)]="asignatura.NatAsignatura2">
+                        <option selected="selected">
+                            Seleccione...
+                        </option>
+                        <option value="Homologable">Homologable</option>
+                        <option value="No-Homologable">No-Homologable</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <br><br>
+
+            <div class="row separar">
+                <button (click)="update()" class="btn btn-success"
+                    style="background: rgb(101, 141, 20)">Actualizar</button>
+
+                <button (click)="delete()" class="btn btn-success" style="background: rgb(148, 9, 9)">Eliminar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

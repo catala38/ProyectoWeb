@@ -1,0 +1,35 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <div class="panel panel-primary" style="width:50%; margin:auto">
+        <div class="panel-heading">Registro de falcultad</div>
+        <div class="panel-body">
+
+
+            <div class="row separar">
+                <div class="col-sm-4">
+                    <label>Nombre de la falcultad:</label>
+                </div>
+                <div class="col-sm-7">
+                    <input [(ngModel)]="facultad.nombre" formControlName="nombre" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" placeholder="digite nombre" type="text" />
+                    <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                        <div *ngIf="f.nombre.errors.required">Nombre es requerido</div>
+                        <div *ngIf="f.nombre.errors.minlength">Nombre requiere minimo 3 caracteres</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-3"> </div>
+                <div class="col-sm-8">
+                    <button class="btn btn-primary" style="background: rgb(101, 141, 20)">Agregar</button>
+                    <button class="btn btn-secondary" type="reset" (click)="onReset()">Limpiar</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</form>

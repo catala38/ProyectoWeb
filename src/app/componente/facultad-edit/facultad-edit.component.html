@@ -1,0 +1,26 @@
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <div class="panel-body">
+<br> <br>
+        <div *ngIf="facultad">
+            <div>
+                <h1 class="h2">Detalle de Facultad</h1>
+            </div>
+            <div class="form-group">
+                <label style="color: rgb(0, 0, 0); font-size: 18px; font-weight: bold;"> Codigo:
+                    {{facultad.facultadId}}
+                </label>
+            </div>
+            <div class="form-group">
+                <label>Nombre:
+                    <input [(ngModel)]="facultad.nombre" class="form-control" placeholder="digite titulo"
+                        type="text" />
+                </label>
+            </div>
+            <div class="form-group">
+                <button (click)="update()" class="btn btn-success" style="background: rgb(101, 141, 20)">Actualizar</button>
+                <button (click)="delete()" class="btn btn-success" style="background: rgb(184, 4, 4)">Eliminar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

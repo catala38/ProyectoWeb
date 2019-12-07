@@ -1,0 +1,161 @@
+<style>
+    .separar {
+        padding: 10px;
+    }
+
+    .panel-heading {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .btn {
+        float: right;
+    }
+</style>
+
+
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <br><br>
+    <div class="panel-heading">Registro de Asignaturas</div>
+    <br>
+    <div class="panel-body">
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Programa: </label>
+            </div>
+            <div class="col-sm-10">
+                <select class="form-control" (change)="mostrar()" id="referencia" name="referencia">
+                    <option selected="selected">
+                        Seleccione...
+                    </option>
+                    <option *ngFor="let p of programas" [value]="p.programaId">{{p.nombrePro}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Facultad: </label>
+            </div>
+            <div class="col-sm-10">
+                <select class="form-control" (change)="mostrar1()" id="referencia1" name="referencia">
+                    <option selected="selected">
+                        Seleccione...
+                    </option>
+                    <option *ngFor="let p of facultades" [value]="p.facultadId">{{p.nombre}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Codigo de Asignatura: </label>
+            </div>
+            <div class="col-sm-10">
+                <input [(ngModel)]="asignatura.AsignaturaId" class="form-control" placeholder="Digite nombre asignatura"
+                type="text">
+            </div>
+        </div>
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Nombre: </label>
+            </div>
+            <div class="col-sm-10">
+                <input [(ngModel)]="asignatura.nombre" class="form-control" placeholder="Digite nombre asignatura"
+                type="text">
+            </div>
+        </div>
+
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Nº de creditos: </label>
+            </div>
+            <div class="col-sm-10">
+                <input [(ngModel)]="asignatura.Ncreditos" class="form-control" placeholder="Digite nombre asignatura"
+                type="text">
+            </div>
+        </div>
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Pre-Requisitos: </label>
+            </div>
+            <div class="col-sm-10">
+                <input [(ngModel)]="asignatura.PreRequisitos" class="form-control"  placeholder="Digite Pre-Requisitos" type="text">
+            </div>
+        </div>
+
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Co-Requisitos: </label>
+            </div>
+            <div class="col-sm-10">
+                <input [(ngModel)]="asignatura.CoRequisitos" class="form-control"  placeholder="Digite Co-Requisitos" type="text">
+            </div>
+        </div>
+
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Tipo: </label>
+            </div>
+            <div class="col-sm-10">
+                <select class="form-control" id="Tipo" name="Tipo" [(ngModel)]="asignatura.Tipo">
+                    <option selected="selected">
+                        Seleccione...
+                    </option>
+                    <option value="Teorico">Teorico</option>
+                    <option value="Pracico">Pracico</option>
+                    <option value="Teorico-Practico">Teorico-Practico</option>
+
+                </select>
+            </div>
+        </div>
+
+
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Naturaleza de Asignatura: </label>
+            </div>
+            <div class="col-sm-10">
+                <select class="form-control" id="Naturaleza1" name="Naturaleza1" [(ngModel)]="asignatura.NatAsignatura1">
+                    <option selected="selected">
+                        Seleccione...
+                    </option>
+                    <option value="Habilitable">Habilitable</option>
+                    <option value="No-Habilitable">No-Habilitable</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row separar">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-10">
+                <select class="form-control" id="Naturaleza2" name="Naturaleza2" [(ngModel)]="asignatura.NatAsignatura2">
+                    <option selected="selected">
+                        Seleccione...
+                    </option>
+                    <option value="Homologable">Homologable</option>
+                    <option value="No-Homologable">No-Homologable</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="row separar">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-10">
+                <button (click)="add()" class="btn btn-primary">Agregar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

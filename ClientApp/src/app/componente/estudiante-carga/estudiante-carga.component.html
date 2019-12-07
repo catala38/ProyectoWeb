@@ -1,0 +1,57 @@
+<style>
+    .separar {
+        padding: 10px;
+    }
+
+    .panel-heading {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .btn {
+        float: right;
+    }
+</style>
+
+
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <br><br>
+    <div class="panel-heading">Registro de Asignaturas</div>
+    <br>
+    <div class="panel-body">
+
+        <div class="col-lg-6">
+
+
+            <table class="table">
+                <thead class="thead-striped">
+                    <tr>
+                        <th scope="col">Asignatura</th>
+                        <th scope="col">Docente</th>
+                        <th scope="col">grupo</th>
+                        <th scope="col">Agregar</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let e of cargas">
+                    <td>{{e.asignatura.nombre}}</td>
+                    <td>{{e.docente.primerNombre}}</td>
+                    <td>
+                <tr *ngFor="let t of e.grupos">
+                    <td>{{t.numero}}</td>
+                    <td><a routerLink="/estudiante-add/{{t.grupoId}}">Ir</a></td>
+
+                </tr>
+                </td>
+                
+                </tr>
+
+            </table>
+
+
+
+        </div>
+
+
+    </div>
+</div>

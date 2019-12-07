@@ -1,0 +1,25 @@
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <br> <br>
+    <div class="panel-heading" style="font-size: 20px; font-weight: bold; color: rgb(0, 0, 0);">Datos basicos</div>
+    <br>
+    <div class="panel-body">
+        <!--TABLA-->
+
+        <table class='table table-striped'>
+            <thead>
+                <tr>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Ver</th>
+                </tr>
+            </thead>
+            <tr *ngFor="let f of facultades">
+                <td>{{f.facultadId}}</td>
+                <td>{{f.nombre}}</td>
+                <td><a routerLink="/facultad-edit/{{f.facultadId}}">Editar</a></td>
+            </tr>
+        </table>
+    </div>
+
+</div>

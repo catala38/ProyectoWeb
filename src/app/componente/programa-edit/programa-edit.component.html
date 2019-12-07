@@ -1,0 +1,59 @@
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <div class="panel-body">
+
+        <div *ngIf="programa">
+            <br> <br>
+            <div>
+                <h1 class="h2">Detalle de Programa</h1>
+            </div>
+
+            <div class="form-group">
+                <label style="color: rgb(0, 0, 0); font-size: 18px; font-weight: bold;">Codigo:
+                    {{programa.programa_id}}
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Facultad:
+                    <input [(ngModel)]="programa.facultad.nombre" class="form-control" placeholder="digite titulo"
+                        type="text" readonly/>
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Programa:
+                    <input [(ngModel)]="programa.nombrePro" class="form-control" placeholder="digite titulo"
+                        type="text" />
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Duracion semestral:
+                    <input [(ngModel)]="programa.duracionSementral" class="form-control" placeholder="digite titulo"
+                        type="number" />
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Horario:
+                    <input [(ngModel)]="programa.horario" class="form-control" placeholder="digite titulo"
+                        type="text" />
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Metodologia:
+                    <input [(ngModel)]="programa.metodologia" class="form-control" placeholder="digite titulo"
+                        type="text" />
+                </label>
+            </div>
+
+            <div class="form-group">
+                <button (click)="update()" class="btn btn-success" style="background: rgb(101, 141, 20)">Actualizar</button>
+                
+                <button (click)="delete()" class="btn btn-success" style="background: rgb(148, 9, 9)">Eliminar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

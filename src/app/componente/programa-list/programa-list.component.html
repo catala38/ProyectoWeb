@@ -1,0 +1,33 @@
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <br> <br> 
+    <div class="panel-heading" style="font-weight: bold; color: rgb(0, 0, 0); text-align: center; font-size: 20px;">Datos basicos</div>
+    <br>
+    <div class="panel-body">
+        <!--TABLA-->
+
+        <table class='table table-striped'>
+            <thead>
+                <tr>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Facultad</th>
+                    <th>Programa</th>
+                    <th>Duracion semestral</th>
+                    <th>Horario</th>
+                    <th>Metodologia</th>
+                    <th>Ver</th>
+                </tr>
+            </thead>
+            <tr *ngFor="let p of programas">
+                <td>{{p.programaId}}</td>
+                <td>{{p.facultad.nombre}}</td>
+                <td>{{p.nombrePro}}</td>
+                <td>{{p.duracionSementral}}</td>
+                <td>{{p.horario}}</td>
+                <td>{{p.metodologia}}</td>
+                <td><a routerLink="/programa-edit/{{p.programaId}}">Editar</a></td>
+            </tr>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,72 @@
+<style>
+    .separar {
+        padding: 30px;
+    }
+
+
+    .panel-heading {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <br><br><br>
+    <div class="panel-heading">Consultar Asignatura</div>
+    <div class="panel-body">
+
+        <br>
+
+        <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Programa: </label>
+                </div>
+                <div class="col-sm-10">
+                    <select class="form-control" (change)="mostrar()" id="referencia" name="referencia">
+                        <option selected="selected">
+                            Seleccione...
+                        </option>
+                        <option *ngFor="let p of programas" [value]="p.programaId">{{p.nombrePro}}</option>
+                    </select>
+                </div>
+            </div>
+    
+
+        
+        <hr style="color: #000000" />
+        <br>
+
+        <table class="table">
+            <thead class="thead-striped">
+                <tr>
+                    <th scope="col">Programa</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Asignatura</th>
+                    <th scope="col">N° creditos</th>
+                    <th scope="col">Pre-Requisitos</th>
+                    <th scope="col">Co-Requisitos</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Naturaleza</th>
+                    <th scope="col">Naturaleza</th>
+                    <th scope="col">Ver</th>
+
+                </tr>
+            </thead>
+            <tr *ngFor="let a of asignaturas">
+                <td>{{a.programa.nombrePro}}</td>
+                <td>{{a.asignaturaId}}</td>
+                <td>{{a.nombre}}</td>
+                <td>{{a.ncreditos}}</td>
+                <td>{{a.preRequisitos}}</td>
+                <td>{{a.coRequisitos}}</td>
+                <td>{{a.tipo}}</td>
+                <td>{{a.natAsignatura1}}</td>
+                <td>{{a.natAsignatura2}}</td>
+                <td><a routerLink="/asignatura-edit/{{a.asignaturaId}}">Editar</a></td>
+            </tr>
+        </table>
+
+
+    </div>
+</div>

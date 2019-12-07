@@ -1,0 +1,104 @@
+<style>
+    .separar {
+        padding: 10px;
+    }
+
+    .panel-heading {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .btn {
+        float: right;
+    }
+</style>
+
+
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <br><br>
+    <div class="panel-heading">Registro de Grupos</div>
+    <br>
+    <div class="panel-body">
+
+        <div class="row separar">
+            <div class="col-lg-6">
+                <label>Programa: </label>
+
+
+                <select class="form-control" (change)="mostrar1()" id="referenciaP" name="referencia">
+                    <option selected="selected">
+                        Seleccione...
+                    </option>
+                    <option *ngFor="let p of programas" [value]="p.programaId">{{p.nombrePro}}</option>
+                </select>
+                <br>
+
+
+
+
+
+                <label>Asignatura: </label>
+
+                <select class="form-control" (change)="mostrarAsignatura()" id="referenciaA" name="referencia">
+                    <option selected="selected">
+                        Seleccione...
+                    </option>
+                    <option *ngFor="let a of asignaturas" [value]="a.asignaturaId">{{a.nombre}}</option>
+                </select>
+                <br>
+
+
+
+
+                <label>Docente: </label>
+
+                <select class="form-control" (change)="mostrarDocente()" id="referenciaD" name="referencia">
+                    <option selected="selected">
+                        Seleccione...
+                    </option>
+                    <option *ngFor="let d of docentes" [value]="d.identificacion">{{d.primerNombre}}</option>
+                </select>
+                <br>
+
+
+                <label>Numero: </label>
+                <input [(ngModel)]="grupo.numero" class="form-control" placeholder="Digite numero" type="number"
+                    class="form-control" readonly>
+                <br><br>
+                <button (click)="addGrupo()" class="btn btn-primary">Agregar</button>
+
+            </div>
+
+            <div class="col-lg-6">
+
+
+                <table class="table">
+                    <thead class="thead-striped">
+                        <tr>
+                            <th scope="col">Asignatura</th>
+                            <th scope="col">Docente</th>
+                            <th scope="col">grupo</th>
+
+
+                        </tr>
+                    </thead>
+                    <!--<tr >
+                        <td [attr.rowspan]="grupos.length+1">{{cargaAcademica.cargaId}}</td>
+                   </tr>-->
+
+                    <tr *ngFor="let e of grupos">
+                        <!--<td  >{{e.asignatura.nombre}}</td>
+                                    <td  >{{e.docente.nombre}}</td>
+
+                            <td  >{{e.grupo.numero}}</td>-->
+                        <td>{{asignatura.nombre}}</td>
+                        <td>{{docente.identificacion}}</td>
+                        <td>{{e.numero}}</td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>

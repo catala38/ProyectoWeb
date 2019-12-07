@@ -1,0 +1,73 @@
+<div class="left-menu">
+  <div class="logo">
+    <img src="assets/img/logo.png" style="width:140px; height: 12opx">
+    <div>Plan de desarrollo de asignatura</div>
+  </div>
+
+  <div class="accordion">
+
+    <div class="section">
+      <input type="radio" name="accordion-1" id="section-1" checked="checked" />
+      <label for="section-1" routerLink=""> <i class="fa fa-home"></i><span>Inicio</span></label>
+    </div>
+    
+
+    <!-- Accordion de Facultad-->
+    <div class="section">
+      <input type="radio" name="accordion-1" id="section-2" value="toggle" />
+      <label for="section-2"><i class="fa fa-suitcase"></i> <span>Facultades</span></label>
+      <div class="content">
+        <ul>
+          <li routerLink="/facultad-add"><i class="fa fa-plus-circle"></i><span>Registrar facultad</span></li>
+          <li routerLink="/facultad-lis"><i class="fa fa-search"></i><span>Consultar facultad</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Accordion de Programa-->
+    <div class="section">
+      <input type="radio" name="accordion-1" id="section-3" value="toggle" />
+      <label for="section-3"> <i class="fa fa-book"></i> <span>Programas</span></label>
+      <div class="content">
+        <ul>
+          <li routerLink="/programa-add"><i class="fa fa-plus-circle"></i><span>Registrar programa</span></li>
+          <li routerLink="/programa-lis"><i class="fa fa-search"></i><span>Consulta programa</span></li>
+        </ul>
+      </div>
+    </div>
+
+  <!-- Accordion de Asignatura-->
+    <div class="section">
+      <input type="radio" name="accordion-1" id="section-4" value="toggle" />
+      <label for="section-4"> <i class="fa fa-pencil-square-o"></i> <span>Asignatura</span></label>
+      <div class="content">
+        <ul>
+          <li routerLink="/asignatura-add"><i class="fa fa-plus-circle"></i><span>Registrar asignatura</span></li>
+          <li routerLink="/asignatura-lis"><i class="fa fa-search"></i><span>Consulta asignatura</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Accordion de Docente-->
+    <div class="section">
+        <input type="radio" name="accordion-1" id="section-5" value="toggle" />
+        <label for="section-5"> <i class="fa fa-pencil-square-o"></i> <span>Docente</span></label>
+        <div class="content">
+          <ul>
+            <li routerLink="/docente-add"><i class="fa fa-plus-circle"></i><span>Registrar docente</span></li>
+            <li routerLink="/docente-lis"><i class="fa fa-search"></i><span>Consulta docentes</span></li>
+          </ul>
+        </div>
+      </div>
+
+    <div class="section">
+      <input type="radio" name="accordion-1" id="section-6" value="toggle" />
+      <label for="section-6"> <span>Section 5</span></label>
+      <div class="content"></div>
+    </div>
+
+
+  </div>
+</div>
+0
+<router-outlet></router-outlet>
