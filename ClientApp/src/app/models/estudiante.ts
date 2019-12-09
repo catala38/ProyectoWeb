@@ -8,6 +8,8 @@ export class Estudiante {
     primerApellido:string;
     segundoApellido :string;
     correo:string;
+    password:string;
+    rol:string;
     cargaAcademica:CargaAcademica ;
 }
 

@@ -27,13 +27,8 @@ namespace ProyectoV2.Controllers
             }
         }
 
-        // Aquí, despues del constructor de la clase, irán los Métodos HTTP GET,POST, DELETE, PUT
+       
         [HttpGet]
-        /* public async Task<ActionResult<IEnumerable<FacturaItem>>> GetMaestroFactura()
-        {
-        return await _context.MaestroFactura.ToListAsync();
-        }*/
-
         public IEnumerable<Facultad> Get()
         {
             return _context.Facultades;

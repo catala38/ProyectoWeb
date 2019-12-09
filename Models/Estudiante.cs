@@ -15,8 +15,17 @@ namespace ProyectoV2.Models
         public string PrimerApellido { get; set; }
         public string SegundoApellido { get; set; }
         public string Correo { get; set; }
-        public int CargaId { get; set; }
+
+          public int CargaId { get; set; }
 
         public CargaAcademica CargaAcademica { get; set; }
+        
+        public string Password { get; set; }
+
+        public string Rol { get; set; }
+
+
+
+       
     }
 }

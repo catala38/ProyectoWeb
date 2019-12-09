@@ -19,6 +19,22 @@ namespace ProyectoV2.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ProyectoV2.Models.Administrador", b =>
+                {
+                    b.Property<string>("Usuario")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Usuario");
+
+                    b.ToTable("Administradores");
+                });
+
             modelBuilder.Entity("ProyectoV2.Models.Asignatura", b =>
                 {
                     b.Property<string>("AsignaturaId")
@@ -83,12 +99,18 @@ namespace ProyectoV2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PrimerApellido")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PrimerNombre")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rol")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SegundoApellido")
@@ -152,10 +174,16 @@ namespace ProyectoV2.Migrations
                     b.Property<string>("Identificacion")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PrimerApellido")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PrimerNombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rol")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SegundoApellido")

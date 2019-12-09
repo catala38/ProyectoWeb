@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Docente } from '../models/docente';
+import { HandleErrorService } from './handle-error.service';
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,7 +16,7 @@ const httpOptions = {
 })
 export class DocenteService {
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private handleErrorService: HandleErrorService) { }
 
   addDocente(docente: Docente): Observable<Docente> {
     return this.http.post<Docente>(this.baseUrl + 'api/docente', docente, httpOptions).pipe(
@@ -37,7 +39,7 @@ export class DocenteService {
       catchError(this.handleError<Docente[]>('getAll', []))
     );
   }
-
+/*
   get(id: string): Observable<Docente> {
     const url = `${this.baseUrl + 'api/docente'}/${id}`;
     return this.http.get<Docente>(url).pipe(
@@ -45,6 +47,16 @@ export class DocenteService {
       catchError(this.handleError<Docente>(`getHero id=${id}`))
     );
   }
+*/
+  
+  get(id: string): Observable<Docente> {
+    const url = `${this.baseUrl + 'api/docente'}/${id}`;
+    return this.http.get<Docente>(url).pipe(
+      tap(_ => this.handleErrorService.log('datos enviados')),
+      catchError(this.handleErrorService.handleError<Docente>('Docente Service', null))
+    );
+  }
+  
   update(docente: Docente): Observable<any> {
     const url = `${this.baseUrl + 'api/docente'}/${docente.identificacion}`;
     return this.http.put(url, docente, httpOptions).pipe(

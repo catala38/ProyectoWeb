@@ -7,6 +7,19 @@ namespace ProyectoV2.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Administradores",
+                columns: table => new
+                {
+                    Usuario = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: true),
+                    Rol = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Administradores", x => x.Usuario);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CargaAcademicas",
                 columns: table => new
                 {
@@ -44,7 +57,9 @@ namespace ProyectoV2.Migrations
                     SegundoApellido = table.Column<string>(nullable: true),
                     Correo = table.Column<string>(nullable: true),
                     CargaId = table.Column<int>(nullable: false),
-                    CargaAcademicaid = table.Column<int>(nullable: true)
+                    CargaAcademicaid = table.Column<int>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    Rol = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -116,6 +131,8 @@ namespace ProyectoV2.Migrations
                     SegundoApellido = table.Column<string>(nullable: false),
                     Correo = table.Column<string>(nullable: false),
                     Telefono = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: true),
+                    Rol = table.Column<string>(nullable: true),
                     programaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -239,6 +256,9 @@ namespace ProyectoV2.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Administradores");
+
             migrationBuilder.DropTable(
                 name: "Estudiantes");
 

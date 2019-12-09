@@ -25,37 +25,46 @@ namespace ProyectoV2.Controllers
             {
 
 
-                _context.Docentes.Add(new Docente {Identificacion="77030926",PrimerNombre="LUCHO",PrimerApellido="catalan",SegundoApellido="santiago",Correo="yovaingeniero@gmail.com",Telefono="3107138302",password="77030926",programaId=1  });
+                _context.Docentes.Add(new Docente {Identificacion="77030926",PrimerNombre="LUCHO",PrimerApellido="catalan",SegundoApellido="santiago",Correo="yovaingeniero@gmail.com",Telefono="3107138302",Password="123",Rol="Docente",programaId=1  });
                 _context.SaveChanges();
             }
         }
 
         // Aquí, despues del constructor de la clase, irán los Métodos HTTP GET,POST, DELETE, PUT
         [HttpGet]
-        /* public async Task<ActionResult<IEnumerable<FacturaItem>>> GetMaestroFactura()
-        {
-        return await _context.MaestroFactura.ToListAsync();
-        }*/
-
+    
         public async Task<ActionResult<IEnumerable<Docente>>> Get()
         {
             return await _context.Docentes.Include(t => t.Programa).ToListAsync();
         }
 
 
+     
         [HttpGet("{id}")]
         public async Task<ActionResult<Docente>> GetDocenteItem(string id)
         {
             
-            var docente = await _context.Docentes.Include(t => t.Programa)
-            .FirstOrDefaultAsync(t => t.Identificacion==id);
+            var docente = await _context.Docentes.Include(t => t.Programa).FirstOrDefaultAsync(t => t.Identificacion==id);
             if (docente == null)
             {
                 return NotFound();
             }
             return docente;
         }
+        
 
+/*
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Docente>> GetDocenteItem(string id)
+        {
+            var docente = await _context.Docentes.FindAsync(id);
+            if (docente == null)
+            {
+                return NotFound();
+            }
+            return docente;
+        } 
+*/
 
 
 

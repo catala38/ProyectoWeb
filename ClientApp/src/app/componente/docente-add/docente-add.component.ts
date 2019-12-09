@@ -34,6 +34,8 @@ export class DocenteAddComponent implements OnInit {
       segundoApellido: ['', [Validators.required, Validators.minLength(3)]],
       correo: ['', [Validators.required, Validators.email]],
       telefono: ['', Validators.required],
+      password: [this.docente.password = "123"],
+      rol:[this.docente.rol="Docente"],
       programa: this.programa
     });
 

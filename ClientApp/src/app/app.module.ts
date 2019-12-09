@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -79,7 +80,9 @@ import { LoginComponent } from './componentes/login/login.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     ReactiveFormsModule,
+    NgbModule,
     FormsModule,
+    
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'facultadAdd', component: FacultadAddComponent },
@@ -87,7 +90,9 @@ import { LoginComponent } from './componentes/login/login.component';
     ]),
     AppRoutingModule
   ],
+  
   entryComponents:[AlertModalComponent],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

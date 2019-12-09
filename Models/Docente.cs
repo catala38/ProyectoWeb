@@ -22,9 +22,10 @@ namespace ProyectoV2.Models
         [Required]
         public string Telefono { get; set; }
 
-        public string password { get; set; }
+        public string Password { get; set; }
 
-        public string rol { get; set; }
+        public string Rol { get; set; }
+
         public int programaId { get; set; }
 
         public Programa Programa { get; set; }

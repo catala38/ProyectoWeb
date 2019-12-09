@@ -6,7 +6,8 @@ namespace ProyectoV2.Models
 {
     public class CargaAcademica
     {
+        
     [Key]
-public int id { get; set; }
+     public int id { get; set; }
     }
 }

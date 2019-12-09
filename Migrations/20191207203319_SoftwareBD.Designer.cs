@@ -10,7 +10,7 @@ using ProyectoV2.Models;
 namespace ProyectoV2.Migrations
 {
     [DbContext(typeof(SoftwareContext))]
-    [Migration("20191206215229_SoftwareBD")]
+    [Migration("20191207203319_SoftwareBD")]
     partial class SoftwareBD
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,22 @@ namespace ProyectoV2.Migrations
                 .HasAnnotation("ProductVersion", "3.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("ProyectoV2.Models.Administrador", b =>
+                {
+                    b.Property<string>("Usuario")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Usuario");
+
+                    b.ToTable("Administradores");
+                });
 
             modelBuilder.Entity("ProyectoV2.Models.Asignatura", b =>
                 {
@@ -85,12 +101,18 @@ namespace ProyectoV2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PrimerApellido")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PrimerNombre")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rol")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SegundoApellido")
@@ -154,10 +176,16 @@ namespace ProyectoV2.Migrations
                     b.Property<string>("Identificacion")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PrimerApellido")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PrimerNombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rol")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SegundoApellido")
