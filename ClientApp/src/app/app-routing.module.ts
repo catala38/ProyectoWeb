@@ -24,107 +24,120 @@ import { EstudianteCargaComponent } from './componente/estudiante-carga/estudian
 import {AuthGuard} from './auth/auth.guard';
 import {LoginComponent} from './componentes/login/login.component';
 import { Login } from './models/login';
+import { EstudianteListComponent } from './componente/estudiante-list/estudiante-list.component';
+
+
  
 
 const routes: Routes = [
-  
+  {path:'',redirectTo:'/logear',pathMatch:'full'},
   {
-    path:'facultad-add',
-    component:FacultadAddComponent
-  },
-  {
-    path:'login',
+    path:'logear',
     component:LoginComponent
   },
   {
+    path:'facultad-add',
+    component:FacultadAddComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
+  },
+  {
+    path:'login',
+    component:LoginComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
+  },
+  {
     path:'facultad-lis',
-    component:FacultadListComponent
+    component:FacultadListComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'facultad-edit/:id',
-    component:FacultadEditComponent
+    component:FacultadEditComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'programa-add',
-    component:ProgramaAddComponent
+    component:ProgramaAddComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'programa-lis',
-    component:ProgramaListComponent
+    component:ProgramaListComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'programa-edit/:id',
-    component:ProgramaEditComponent
+    component:ProgramaEditComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'asignatura-add',
-    component:AsignaturaAddComponent
+    component:AsignaturaAddComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'asignatura-lis',
-    component:AsignaturaListComponent
+    component:AsignaturaListComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'asignatura-edit/:id',
-    component:AsignaturaEditComponent
+    component:AsignaturaEditComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'docente-add',
-    component:DocenteAddComponent
+    component:DocenteAddComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'docente-lis',
-    component:DocenteListComponent
+    component:DocenteListComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'docente-edit/:id',
-    component:DocenteEditComponent
+    component:DocenteEditComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'ejeTematico-add/:idAsignatura',
-    component:EjeTematicoAddComponent
+    component:EjeTematicoAddComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
   
   {
     path:'ejeTematico-lis',
-    component:EjeTematicoListComponent
+    component:EjeTematicoListComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'planAsignatura-add',
-    component:PlanAsignaturaComponent
+    component:PlanAsignaturaComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'grupo-add',
-    component:GrupoAddComponent
+    component:GrupoAddComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'grupo-lis',
-    component:GrupoListComponent
+    component:GrupoListComponent,canActivate:[AuthGuard],data: { role: 'Administrador' }
   },
 
   {
     path:'estudiante-add/:grupoId',
-    component:EstudianteAddComponent
+    component:EstudianteAddComponent,canActivate:[AuthGuard],data: { role: 'Docente' }
   },
 
   {
     path:'estudiante-carga',
-    component:EstudianteCargaComponent
+    component:EstudianteCargaComponent,canActivate:[AuthGuard],data: { role: 'Docente' }
   },
+
+  {
+    path:'estudiante-lis',
+    component:EstudianteListComponent,canActivate:[AuthGuard],data: { role: 'Docente' }
+  },
+
 
 ];
 

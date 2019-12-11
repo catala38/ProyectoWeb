@@ -15,37 +15,36 @@
 </style>
 
 
-<div class="panel panel-primary" style="width:50%; margin:auto">
+<div class="panel panel-primary" style="width:70%; margin:auto">
     <br><br>
-    <div class="panel-heading">Registro de Asignaturas</div>
+    <div class="panel-heading">Consulta de Carga Academica</div>
     <br>
     <div class="panel-body">
 
-        <div class="col-lg-6">
+        <div  class="col-lg-6">
 
 
-            <table class="table">
-                <thead class="thead-striped">
-                    <tr>
-                        <th scope="col">Asignatura</th>
-                        <th scope="col">Docente</th>
-                        <th scope="col">grupo</th>
-
-
-                    </tr>
-                </thead>
-                <tr *ngFor="let e of cargas">
-                    <td>{{e.asignatura.nombre}}</td>
-                    <td>{{e.docente.primerNombre}}</td>
-                    <td>
-                <tr *ngFor="let t of e.grupos">
-                    <td>{{t.numero}}</td>
-                </tr>
-                </td>
-                </tr>
-
-            </table>
-
+            
+                <table style="text-align: center;" class="table table-bordered">
+                        <thead class="thead-striped">
+                            <tr>
+                                <th scope="col">Asignatura</th>
+                                <th scope="col">Docente</th>
+                                <th scope="col">grupo</th>
+    
+    
+                            </tr>
+                        </thead>
+                     
+                        <tr *ngFor="let e of grupos">
+              
+                            <td>{{e.asignatura.nombre}}</td>
+                            <td>{{e.docente.identificacion}}</td>
+                            <td>{{e.numero}}</td>
+    
+                        </tr>
+    
+                    </table>
 
 
         </div>

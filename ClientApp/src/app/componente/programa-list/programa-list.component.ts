@@ -21,6 +21,7 @@ export class ProgramaListComponent implements OnInit {
   
 
   constructor(private programaService: ProgramaService,private facultadService: FacultadService) { }
+  
   ngOnInit() {
     this.getFacultades();
     this.programaService.getAll().subscribe(result =>{

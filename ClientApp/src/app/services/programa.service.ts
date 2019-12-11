@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import {Programa} from '../models/programa';
+import { HandleErrorService } from './handle-error.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,12 +15,12 @@ const httpOptions = {
 
 export class ProgramaService {
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string,private handleErrorService: HandleErrorService) { }
 
   addCliente(programa: Programa): Observable<Programa> {
     return this.http.post<Programa>(this.baseUrl + 'api/programa', programa, httpOptions).pipe(
-      tap((newPrograma: Programa) => this.log(`se agregó un nuevo Programa w/ id=${newPrograma.programaId}`)),
-      catchError(this.handleError<Programa>('addCliente'))
+      tap(_ => this.handleErrorService.log('datos enviados')),
+      catchError(this.handleErrorService.handleError<Programa>('Registrar Programa', null))
     );
   }
 
@@ -34,7 +35,7 @@ export class ProgramaService {
     const url = `${this.baseUrl + 'api/programa'}/${id}`;
     return this.http.get<Programa[]>(url).pipe(
       tap(_ => console.log(`fetched cliente id`)),
-      catchError(this.handleError<Programa[]>(`getHero id`,[]))
+      catchError(this.handleErrorService.handleError<Programa[]>(`getHero id`,[]))
     );
   }
 
@@ -51,8 +52,8 @@ export class ProgramaService {
   get(id: number): Observable<Programa> {
     const url = `${this.baseUrl + 'api/programa'}/${id}`;
     return this.http.get<Programa>(url).pipe(
-      tap(_ => console.log(`fetched cliente id=${id}`)),
-      catchError(this.handleError<Programa>(`getHero id=${id}`))
+      tap(_ => this.handleErrorService.log('datos enviados')),
+      catchError(this.handleErrorService.handleError<Programa>('Cuenta Service', null))
     );
   }
   update(programa: Programa): Observable<any> {

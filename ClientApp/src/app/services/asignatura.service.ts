@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Asignatura } from '../models/asignatura';
+import { HandleErrorService } from './handle-error.service';
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,12 +16,12 @@ const httpOptions = {
 })
 export class AsignaturaService {
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string,private handleErrorService: HandleErrorService) { }
 
   addCliente(asignatura: Asignatura): Observable<Asignatura> {
     return this.http.post<Asignatura>(this.baseUrl + 'api/asignatura', asignatura, httpOptions).pipe(
-      tap((newAsignatura: Asignatura) => this.log(`Se agregó una asignatura w/ id=${newAsignatura.AsignaturaId}`)),
-      catchError(this.handleError<Asignatura>('addCliente'))
+      tap(_ => this.handleErrorService.log('datos enviados')),
+      catchError(this.handleErrorService.handleError<Asignatura>('Registrar Asignatura', null))
     );
   }
 
@@ -40,8 +42,8 @@ export class AsignaturaService {
   get(id: string): Observable<Asignatura> {
     const url = `${this.baseUrl + 'api/asignatura'}/${id}`;
     return this.http.get<Asignatura>(url).pipe(
-      tap(_ => console.log(`fetched cliente id=${id}`)),
-      catchError(this.handleError<Asignatura>(`getHero id=${id}`))
+      tap(_ => this.handleErrorService.log('datos enviados')),
+      catchError(this.handleErrorService.handleError<Asignatura>('Cuenta Service', null))
     );
   }
   update(asignatura: Asignatura): Observable<any> {

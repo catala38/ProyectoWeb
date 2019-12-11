@@ -56,7 +56,7 @@ temas:Tema[];
     this.ejeTematico.asignatura=this.asignatura;
 
     this.ejeService.addCliente(this.ejeTematico).subscribe(rest=>{
-      sessionStorage.clear();
+      sessionStorage.removeItem("temas")
       this.getTemas();
     });
    

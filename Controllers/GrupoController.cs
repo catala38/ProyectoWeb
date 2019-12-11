@@ -37,6 +37,9 @@ namespace ProyectoV2.Controllers
             .Include(t => t.Docente)
             .ToListAsync();
         }
+
+
+
          [HttpGet("asignatura={asignaturaId}")]
      
         public async Task<ActionResult<IEnumerable<Grupo>>> GetGrupoByAsignatura(string asignaturaId)
@@ -47,6 +50,30 @@ namespace ProyectoV2.Controllers
             .Where(t=>t.AsignaturaId==asignaturaId)
             .ToListAsync();
         }
+
+        [HttpGet("docente={identificacion}")]
+     
+        public async Task<ActionResult<IEnumerable<Grupo>>> GetGrupoByDocente(string identificacion)
+        {
+            return await _context.Grupos
+            .Include(t => t.Asignatura)
+            .Include(t => t.Docente)
+            .Where(t=>t.DocenteId==identificacion)
+            .ToListAsync();
+        }
+
+        [HttpGet("id")]
+
+        public async Task<ActionResult<IEnumerable<Grupo>>> GetGrupoByAD(int id, Grupo item)
+        {
+            return await _context.Grupos
+            .Include(t => t.Asignatura)
+            .Include(t => t.Docente)
+            .Where(t=>t.DocenteId==item.identificacion && t.AsignaturaId==item.asignaturaId)
+            .ToListAsync();
+        }
+
+       
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Grupo>> GetGrupoItem(int id)
@@ -62,6 +89,7 @@ namespace ProyectoV2.Controllers
             return grupo;
         }
 
+      
 
     
 

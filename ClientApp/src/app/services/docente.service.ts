@@ -20,8 +20,8 @@ export class DocenteService {
 
   addDocente(docente: Docente): Observable<Docente> {
     return this.http.post<Docente>(this.baseUrl + 'api/docente', docente, httpOptions).pipe(
-      tap((newDocente: Docente) => this.log(`Se agregó un docente w/ id=${newDocente.identificacion}`)),
-      catchError(this.handleError<Docente>('addDocente'))
+      tap(_ => this.handleErrorService.log('datos enviados')),
+      catchError(this.handleErrorService.handleError<Docente>('Registrar Docente', null))
     );
   }
 
@@ -39,23 +39,16 @@ export class DocenteService {
       catchError(this.handleError<Docente[]>('getAll', []))
     );
   }
-/*
-  get(id: string): Observable<Docente> {
-    const url = `${this.baseUrl + 'api/docente'}/${id}`;
-    return this.http.get<Docente>(url).pipe(
-      tap(_ => console.log(`fetched docente id=${id}`)),
-      catchError(this.handleError<Docente>(`getHero id=${id}`))
-    );
-  }
-*/
-  
+
   get(id: string): Observable<Docente> {
     const url = `${this.baseUrl + 'api/docente'}/${id}`;
     return this.http.get<Docente>(url).pipe(
       tap(_ => this.handleErrorService.log('datos enviados')),
-      catchError(this.handleErrorService.handleError<Docente>('Docente Service', null))
+      catchError(this.handleErrorService.handleError<Docente>('Cuenta Service', null))
     );
   }
+
+  
   
   update(docente: Docente): Observable<any> {
     const url = `${this.baseUrl + 'api/docente'}/${docente.identificacion}`;

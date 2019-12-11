@@ -5,6 +5,8 @@ import { Facultad } from 'src/app/models/facultad';
 import { FacultadService } from 'src/app/services/facultad.service';
 import { isUndefined } from 'util';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertModalComponent } from 'src/app/componente/alert-modal/alert-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -21,7 +23,7 @@ export class ProgramaAddComponent implements OnInit {
   facultades: Facultad[];
   haveFacultad: boolean;
 
-  constructor(private programaService: ProgramaService, private facultadService: FacultadService, private formBuilder: FormBuilder) { }
+  constructor(private programaService: ProgramaService, private facultadService: FacultadService, private formBuilder: FormBuilder, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.facultad = new Facultad();
@@ -61,16 +63,20 @@ export class ProgramaAddComponent implements OnInit {
     console.log(this.programa);
     this.programaService.getProgramaByNombre(this.programa.nombrePro.toUpperCase()).subscribe(rest => {
       if (isUndefined(rest)) {
-        console.log(rest);
         if (this.haveFacultad) {
           this.programaService.
             addCliente(this.programa).subscribe();
+          const messageBox = this.modalService.open(AlertModalComponent)
+          messageBox.componentInstance.title = "Resultado Operación";
+          messageBox.componentInstance.message = 'Programa guardado con exito';
         }
       } else {
-        alert('ya existe la facultad');
+        const messageBox = this.modalService.open(AlertModalComponent)
+        messageBox.componentInstance.title = "Resultado Operación";
+        messageBox.componentInstance.message = 'Ya existe un programa con ese nombre';
       }
     })
-   
+
   }
 
   get f() { return this.registerForm.controls; }

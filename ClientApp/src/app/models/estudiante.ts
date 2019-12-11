@@ -1,4 +1,4 @@
-import { CargaAcademica } from "./carga-academica";
+import { Grupo } from "./grupo";
 
 export class Estudiante {
     idEstudiante:number;
@@ -8,8 +8,5 @@ export class Estudiante {
     primerApellido:string;
     segundoApellido :string;
     correo:string;
-    password:string;
-    rol:string;
-    cargaAcademica:CargaAcademica ;
+    grupo:Grupo;
 }
-

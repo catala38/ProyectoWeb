@@ -5,7 +5,7 @@
 
     .panel-heading {
         text-align: center;
-        font-size: 18px;
+        font-size: 25px;
         font-weight: bold;
     }
 
@@ -15,7 +15,7 @@
 </style>
 
 
-<div class="panel panel-primary" style="width:50%; margin:auto">
+<div class="panel panel-primary" style="width:70%; margin:auto">
     <br><br>
     <div class="panel-heading">Registro de Grupos</div>
     <br>
@@ -73,7 +73,7 @@
             <div class="col-lg-6">
 
 
-                <table class="table">
+                <table class="table table-bordered">
                     <thead class="thead-striped">
                         <tr>
                             <th scope="col">Asignatura</th>
@@ -83,15 +83,9 @@
 
                         </tr>
                     </thead>
-                    <!--<tr >
-                        <td [attr.rowspan]="grupos.length+1">{{cargaAcademica.cargaId}}</td>
-                   </tr>-->
-
+                 
                     <tr *ngFor="let e of grupos">
-                        <!--<td  >{{e.asignatura.nombre}}</td>
-                                    <td  >{{e.docente.nombre}}</td>
-
-                            <td  >{{e.grupo.numero}}</td>-->
+          
                         <td>{{asignatura.nombre}}</td>
                         <td>{{docente.identificacion}}</td>
                         <td>{{e.numero}}</td>

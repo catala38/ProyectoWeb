@@ -12,21 +12,20 @@ import { CargaAcademica } from 'src/app/models/carga-academica';
 export class EstudianteCargaComponent implements OnInit {
   grupo: Grupo;
   grupos: Grupo[];
-  cargaAcademica: CargaAcademica;
-  cargas: CargaAcademica[];
+  
 
   constructor(
-    private grupoService: GrupoService,
-    private cargaAcademicaService: CargaAcademicaService) { }
+    private grupoService: GrupoService) { }
 
 
   ngOnInit() {
-    this.getCargas();
+    this.getAsignaturas();
 
   }
 
-  getCargas() {
-    this.cargaAcademicaService.getAll().subscribe(cargas => this.cargas = cargas);
+  getAsignaturas() {
+    var identificacion = sessionStorage.getItem('user');
+    this.grupoService.getGrupoByDocente(identificacion).subscribe(grupos => this.grupos = grupos);
   }
 
 }

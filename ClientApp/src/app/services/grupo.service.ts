@@ -46,6 +46,15 @@ export class GrupoService {
       catchError(this.handleError<Grupo>(`getHero id=${id}`))
     );
   }
+  
+  getAll(): Observable<Grupo[]> {
+    return this.http.get<Grupo[]>(this.baseUrl + 'api/grupo')
+    .pipe(
+      tap(_ => console.log('Se Consulta la información')),
+      catchError(this.handleError<Grupo[]>('getAll', []))
+    );
+  }
+
   getGrupoByAsignatura(id: string): Observable<Grupo[]> {
     const url = `${this.baseUrl + 'api/grupo'}/asignatura=${id}`;
     return this.http.get<Grupo[]>(url).pipe(
@@ -58,6 +67,22 @@ export class GrupoService {
       )
     );
   }
+
+  getGrupoByDocente(id: string): Observable<Grupo[]> {
+    const url = `${this.baseUrl + 'api/grupo'}/docente=${id}`;
+    return this.http.get<Grupo[]>(url).pipe(
+      tap(_ => console.log(`fetched Grupo id=${id}`)),
+      catchError(
+        rest=>{
+          return of([]);
+
+        }
+      )
+    );
+  }
+
+
+
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

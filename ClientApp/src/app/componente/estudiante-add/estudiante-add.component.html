@@ -14,84 +14,85 @@
     }
 </style>
 
-<div class="panel panel-primary" style="width:50%; margin:auto">
-<br><br>
-<div class="panel-heading">Registro de Estudiantes</div>
+<div class="panel panel-primary" style="width:70%; margin:auto">
+  
+    <div class="panel-heading">Registro de Estudiantes</div>
+    <br><br>
+    <label style=" font-size: 15px; font-weight: bold; text-align: center;">Grupo {{grupo.numero}}</label>
 <br>
 
+    <div class="panel-body">
 
-<div class="panel-body">
-    <div class="row separar">
-        <div class="col-sm-2">
-            <label>Identificacion: </label>
-        </div>
-        <div class="col-sm-10">
-            <input [(ngModel)]="estudiante.identificacion" class="form-control" placeholder="Digite identificacion"
-                type="text" required class="form-control">
-        </div>
-    </div>
+        <div class="row separar">
 
-    <div class="row separar">
-        <div class="col-sm-2">
-            <label>Primer Nombre: </label>
-        </div>
-        <div class="col-sm-10">
-            <input [(ngModel)]="estudiante.primerNombre" class="form-control" placeholder="Digite primer nombre"
-                type="text" required class="form-control">
-        </div>
-    </div>
+            <div class="col-lg-6">
 
+                <!-- <label style="  font-size: 15px; font-weight: bold;">Asignatura : {{grupo.asignatura.nombre}} </label>
+-->
 
-    <div class="row separar">
-        <div class="col-sm-2">
-            <label>Segundo Nombre: </label>
-        </div>
-        <div class="col-sm-10">
-            <input [(ngModel)]="estudiante.segundoNombre" class="form-control" placeholder="Digite segundo nombre"
-                type="text" required class="form-control">
-        </div>
-    </div>
+                <label>Identificacion: </label>
 
-    <div class="row separar">
-        <div class="col-sm-2">
-            <label>Primer Apellido: </label>
-        </div>
-        <div class="col-sm-10">
-            <input [(ngModel)]="estudiante.primerApellido" class="form-control" placeholder="Digite primer Apellido"
-                type="text" required class="form-control">
-        </div>
-    </div>
+                <input [(ngModel)]="estudiante.identificacion" class="form-control" placeholder="Digite identificacion"
+                    type="text" required class="form-control">
+
+<br>
+                <label>Primer Nombre: </label>
+
+                <input [(ngModel)]="estudiante.primerNombre" class="form-control" placeholder="Digite primer nombre"
+                    type="text" required class="form-control">
+
+<br>
+
+                <label>Segundo Nombre: </label>
+
+                <input [(ngModel)]="estudiante.segundoNombre" class="form-control" placeholder="Digite segundo nombre"
+                    type="text"  class="form-control">
+
+<br>
+                <label>Primer Apellido: </label>
+
+                <input [(ngModel)]="estudiante.primerApellido" class="form-control" placeholder="Digite primer Apellido"
+                    type="text" required class="form-control">
 
 
-    <div class="row separar">
-        <div class="col-sm-2">
-            <label>Segundo Apellido: </label>
-        </div>
-        <div class="col-sm-10">
-            <input [(ngModel)]="estudiante.segundoApellido" class="form-control" placeholder="Digite segundo Apellido"
-                type="text" required class="form-control">
-        </div>
-    </div>
+<br>
+                <label>Segundo Apellido: </label>
 
-    <div class="row separar">
-        <div class="col-sm-2">
-            <label>Correo: </label>
-        </div>
-        <div class="col-sm-10">
-            <input [(ngModel)]="estudiante.correo" class="form-control" placeholder="Digite correo" type="text"
-                required class="form-control">
-        </div>
-    </div>
+                <input [(ngModel)]="estudiante.segundoApellido" class="form-control"
+                    placeholder="Digite segundo Apellido" type="text"  class="form-control">
 
-    <div class="row separar">
-        <div class="col-sm-2">
+<br>
+                <label>Correo: </label>
+
+                <input [(ngModel)]="estudiante.correo" class="form-control" placeholder="Digite correo" type="text"
+                    required class="form-control">
+<br>
+                <button (click)="addEstudiante()" class="btn btn-primary">Agregar</button>
+
+            </div>
+
+            <div class="col-lg-6">
+                    <br>
+                <table class="table">
+                    <thead class="thead-striped">
+                        <tr>
+                          
+                            <th scope="col">Identificacion</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellidos</th>
+
+                        </tr>
+                    </thead>
+
+                    <tr *ngFor="let e of estudiantes">
+                        
+                        <td>{{e.identificacion}}</td>
+                        <td>{{e.primerNombre}} {{e.segundoNombre}}</td>
+                        <td>{{e.primerApellido}} {{e.segundoApellido}}</td>
+                    </tr>
+                </table>
+
+            </div>
+
+
         </div>
-        <div class="col-sm-10">
-            <button (click)="add()" class="btn btn-primary">Agregar</button>
-        </div>
-    </div>
-
-
-
-</div>
-</div>

@@ -15,10 +15,10 @@ export class EstudianteService {
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
-  addDocente(estudiante: Estudiante): Observable<Estudiante> {
-    return this.http.post<Estudiante>(this.baseUrl + 'api/docente', estudiante, httpOptions).pipe(
+  addEstudiante(estudiante: Estudiante): Observable<Estudiante> {
+    return this.http.post<Estudiante>(this.baseUrl + 'api/estudiante', estudiante, httpOptions).pipe(
       tap((newEstudiante: Estudiante) => this.log(`Se agregó un Estudiante w/ id=${newEstudiante.identificacion}`)),
-      catchError(this.handleError<Estudiante>('addDocente'))
+      catchError(this.handleError<Estudiante>('addEstudiante'))
     );
   }
 
@@ -36,6 +36,15 @@ export class EstudianteService {
       catchError(this.handleError<Estudiante>(`getHero id=${id}`))
     );
   }
+
+  getEstudianteByGrupo(id:number): Observable<Estudiante[]> {
+    const url = `${this.baseUrl + 'api/estudiante'}/grupo=${id}`;
+    return this.http.get<Estudiante[]>(url).pipe(
+      tap(_ => console.log('Se Consulta la información')),
+      catchError(this.handleError<Estudiante[]>('getAll', []))
+    );
+  }
+
   update(estudiante: Estudiante): Observable<any> {
     const url = `${this.baseUrl + 'api/estudiante'}/${estudiante.identificacion}`;
     return this.http.put(url, estudiante, httpOptions).pipe(

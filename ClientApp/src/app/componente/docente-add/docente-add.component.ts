@@ -27,13 +27,13 @@ export class DocenteAddComponent implements OnInit {
     this.programa = new Programa();
     this.docente = new Docente();
     this.registerForm = this.formBuilder.group({
-      identificacion: ['', [Validators.required, Validators.minLength(10)]],
-      primerNombre: ['', [Validators.required, Validators.minLength(3)]],
-      segundoNombre: ['', [Validators.required, Validators.minLength(3)]],
-      primerApellido: ['', [Validators.required, Validators.minLength(3)]],
-      segundoApellido: ['', [Validators.required, Validators.minLength(3)]],
-      correo: ['', [Validators.required, Validators.email]],
-      telefono: ['', Validators.required],
+      identificacion: [this.docente.identificacion, [Validators.required, Validators.minLength(10)]],
+      primerNombre: [this.docente.primerNombre, [Validators.required, Validators.minLength(3)]],
+      segundoNombre: this.docente.segundoNombre, 
+      primerApellido: [this.docente.primerNombre, [Validators.required, Validators.minLength(3)]],
+      segundoApellido: this.docente.segundoNombre,
+      correo: [this.docente.correo, [Validators.required, Validators.email]],
+      telefono: [this.docente.telefono, Validators.required],
       password: [this.docente.password = "123"],
       rol:[this.docente.rol="Docente"],
       programa: this.programa
@@ -73,12 +73,10 @@ export class DocenteAddComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
     if (this.registerForm.invalid) {
       return;
     }
     this.add();
-
   }
 
   onReset() {

@@ -9,7 +9,7 @@ export class FiltroProgramaPipe implements PipeTransform {
   transform(programas: Programa[], searchText: string) {
     if (searchText == null) return programas;
     return programas.filter(programa =>
-        programa.facultad.nombre.toString().indexOf(searchText) !== -1
+        programa.nombrePro.toString().toLowerCase().indexOf(searchText.toLowerCase()) !== -1
     );
 }
 

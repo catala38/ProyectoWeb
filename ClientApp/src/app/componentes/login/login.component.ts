@@ -108,26 +108,7 @@ export class LoginComponent implements OnInit {
         }
        }
      }
-      /*if (this.docente.identificacion == this.logear.usuario && this.docente.password == this.logear.contra){
-        const messageBox = this.modalService.open(AlertModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
-        messageBox.componentInstance.message = ('Bienvenido: '+this.docente.primerNombre+'- Su cargo en el sistema es: '+this.docente.rol);
-        this.login()
-      }else{
-        const messageBox = this.modalService.open(AlertModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
-        messageBox.componentInstance.message = 'Verifique los datos de su cuenta :-)';
-      }*/
-    /*  if (this.administrador.usuario == this.logear.usuario && this.administrador.password == this.logear.contra){
-        const messageBox = this.modalService.open(AlertModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
-        messageBox.componentInstance.message = ('Bienvenido: '+this.logear.usuario);    
-        this.login()
-      }else{
-        const messageBox = this.modalService.open(AlertModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
-        messageBox.componentInstance.message = 'Verifique los datos de su cuenta :-)';
-      }*/
+      
      
 
   }
@@ -135,10 +116,8 @@ export class LoginComponent implements OnInit {
   login()
   {
     var rol = "Administrador";
-     var rolDoc = "Docente";
-    //this.authService.login(this.administrador.usuario,"Admin","Admin",this.administrador.rol);
-    //this.authService.login(this.docente.identificacion,this.docente.primerNombre,this.docente.primerApellido, this.docente.rol);
-
+    var rolDoc = "Docente";
+    
     if(rol== this.logear.rol){
       this.authService.login(this.administrador.usuario,"Admin","Admin",this.administrador.rol);
     }else if(rolDoc== this.logear.rol){

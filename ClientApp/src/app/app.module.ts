@@ -39,6 +39,8 @@ import { EstudianteAddComponent } from './componente/estudiante-add/estudiante-a
 import { EstudianteCargaComponent } from './componente/estudiante-carga/estudiante-carga.component';
 import { AlertModalComponent } from './componente/alert-modal/alert-modal.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { NavBarComponent } from './componente/nav-bar/nav-bar.component';
+import { EstudianteListComponent } from './componente/estudiante-list/estudiante-list.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { LoginComponent } from './componentes/login/login.component';
     EstudianteAddComponent,
     EstudianteCargaComponent,
     AlertModalComponent,
-    LoginComponent
+    LoginComponent,
+    NavBarComponent,
+    EstudianteListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -84,15 +88,16 @@ import { LoginComponent } from './componentes/login/login.component';
     FormsModule,
     
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'facultadAdd', component: FacultadAddComponent },
-      { path: 'facultadList', component: FacultadListComponent },
+      { path: 'nav-bar', component: HomeComponent, pathMatch: 'full' },
+      { path: 'counter', component: CounterComponent },
+      { path: 'fetch-data', component: FetchDataComponent },
     ]),
-    AppRoutingModule
+    
+    HttpClientModule,
+    AppRoutingModule,
   ],
   
   entryComponents:[AlertModalComponent],
-  
   providers: [],
   bootstrap: [AppComponent]
 })

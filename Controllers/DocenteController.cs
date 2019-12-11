@@ -51,7 +51,7 @@ namespace ProyectoV2.Controllers
             }
             return docente;
         }
-        
+
 
 /*
         [HttpGet("{id}")]

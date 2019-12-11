@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Facultad } from '../models/facultad';
+import { HandleErrorService } from './handle-error.service';
 
 
 const httpOptions = {
@@ -16,17 +17,18 @@ const httpOptions = {
 
 export class FacultadService {
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private handleErrorService: HandleErrorService) { }
 
   addCliente(facultad: Facultad): Observable<Facultad> {
     return this.http.post<Facultad>(this.baseUrl + 'api/facultad', facultad, httpOptions).pipe(
-      tap((newFacultad: Facultad) => this.log(`Se agregó una nueva Facultad w/ id=${newFacultad.facultadId}`)),
-      catchError(this.handleError<Facultad>('addCliente'))
+      tap(_ => this.handleErrorService.log('datos enviados')),
+      catchError(this.handleErrorService.handleError<Facultad>('Registrar Facultad',null))
     );
   }
 
   getAll(): Observable<Facultad[]> {
-    return this.http.get<Facultad[]>(this.baseUrl + 'api/facultad').pipe(
+    return this.http.get<Facultad[]>(this.baseUrl + 'api/facultad')
+    .pipe(
       tap(_ => console.log('Se Consulta la información')),
       catchError(this.handleError<Facultad[]>('getAll', []))
     );
@@ -46,10 +48,12 @@ export class FacultadService {
   get(id: number): Observable<Facultad> {
     const url = `${this.baseUrl + 'api/facultad'}/${id}`;
     return this.http.get<Facultad>(url).pipe(
-      tap(_ => console.log(`fetched cliente id=${id}`)),
-      catchError(this.handleError<Facultad>(`getHero id=${id}`))
+      tap(_ => this.handleErrorService.log('datos enviados')),
+      catchError(this.handleErrorService.handleError<Facultad>('Cuenta Service', null))
     );
   }
+
+
   update(facultad: Facultad): Observable<any> {
     const url = `${this.baseUrl + 'api/facultad'}/${facultad.facultadId}`;
     return this.http.put(url, facultad, httpOptions).pipe(

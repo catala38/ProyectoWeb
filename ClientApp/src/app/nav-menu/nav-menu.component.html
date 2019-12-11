@@ -1,111 +1,159 @@
-<div class="left-menu">
-  <div class="logo">
-    <img src="assets/img/logo.png" style="width:140px; height: 12opx">
-    <div>Plan de desarrollo de asignatura</div>
-  </div>
-
-  <div class="accordion">
-
-    <div class="section">
-      <input type="radio" name="accordion-1" id="section-1" checked="checked" />
-      <label for="section-1" routerLink=""> <i class="fa fa-home"></i><span>Inicio</span></label>
+<div class="wrapper">
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <img src="assets/img/blanco.png" style="width:210px; height: 120px">
+      <br><br>
+      <h5></h5>
     </div>
-    
 
-    <!-- Accordion de Facultad-->
-    <div class="section">
-      <input type="radio" name="accordion-1" id="section-2" value="toggle" />
-      <label for="section-2"><i class="fa fa-suitcase"></i> <span>Facultades</span></label>
-      <div class="content">
-        <ul>
-          <li routerLink="/facultad-add"><i class="fa fa-plus-circle"></i><span>Registrar facultad</span></li>
-          <li routerLink="/facultad-lis"><i class="fa fa-search"></i><span>Consultar facultad</span></li>
+    <ul class="list-unstyled components" *ngIf="isAuthenticated()">
+      <p>Plan de Desarrollo de Asignatura </p>
+      <li class="active" *ngIf="isAuthenticatedRole('Administrador')">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="fa fa-th-list"
+          aria-hidden="true">Facultad</a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li>
+            <a [routerLink]='["/facultad-add"]'>Registrar Facultad</a>
+          </li>
+          <li>
+            <a [routerLink]='["/facultad-lis"]'>Consultar Facultades</a>
+          </li>
+
         </ul>
-      </div>
-    </div>
+      </li>
 
-    <!-- Accordion de Programa-->
-    <div class="section">
-      <input type="radio" name="accordion-1" id="section-3" value="toggle" />
-      <label for="section-3"> <i class="fa fa-book"></i> <span>Programas</span></label>
-      <div class="content">
-        <ul>
-          <li routerLink="/programa-add"><i class="fa fa-plus-circle"></i><span>Registrar programa</span></li>
-          <li routerLink="/programa-lis"><i class="fa fa-search"></i><span>Consulta programa</span></li>
+      <li class="active" *ngIf="isAuthenticatedRole('Administrador')">
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Programa</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+          <li>
+            <a [routerLink]='["/programa-add"]'>Registrar Programa</a>
+          </li>
+          <li>
+            <a [routerLink]='["/programa-lis"]'>Consultar Programas</a>
+          </li>
+
         </ul>
-      </div>
-    </div>
+      </li>
 
-  <!-- Accordion de Asignatura-->
-    <div class="section">
-      <input type="radio" name="accordion-1" id="section-4" value="toggle" />
-      <label for="section-4"> <i class="fa fa-pencil-square-o"></i> <span>Asignatura</span></label>
-      <div class="content">
-        <ul>
-          <li routerLink="/asignatura-add"><i class="fa fa-plus-circle"></i><span>Registrar asignatura</span></li>
-          <li routerLink="/asignatura-lis"><i class="fa fa-search"></i><span>Consulta asignatura</span></li>
+      <li class="active" *ngIf="isAuthenticatedRole('Administrador')">
+        <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Asignatura</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu1">
+          <li>
+            <a [routerLink]='["/asignatura-add"]'>Registrar Asignatura</a>
+          </li>
+          <li>
+            <a [routerLink]='["/asignatura-lis"]'>Consultar Asignaturas</a>
+          </li>
+
         </ul>
-      </div>
-    </div>
+      </li>
 
-    <!-- Accordion de Docente-->
-    <div class="section">
-        <input type="radio" name="accordion-1" id="section-5" value="toggle" />
-        <label for="section-5"> <i class="fa fa-pencil-square-o"></i> <span>Docente</span></label>
-        <div class="content">
-          <ul>
-            <li routerLink="/docente-add"><i class="fa fa-plus-circle"></i><span>Registrar docente</span></li>
-            <li routerLink="/docente-lis"><i class="fa fa-search"></i><span>Consulta docentes</span></li>
-          </ul>
+      <li class="active" *ngIf="isAuthenticatedRole('Administrador')">
+        <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Plan de
+          Asignatura</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu2">
+          <li>
+            <a [routerLink]='["/planAsignatura-add"]'>Registrar Plan de Asignatura</a>
+          </li>
+          <li>
+            <a [routerLink]='["/ejeTematico-lis"]'>Consulta Ejes</a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li class="active" *ngIf="isAuthenticatedRole('Administrador')">
+        <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Docente</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu3">
+          <li>
+            <a [routerLink]='["/docente-add"]'>Registrar Docente</a>
+          </li>
+          <li>
+            <a [routerLink]='["/docente-lis"]'>Consultar Docentes</a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li class="active" *ngIf="isAuthenticatedRole('Administrador')">
+        <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Grupos</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu4">
+          <li>
+            <a [routerLink]='["/grupo-add"]'>Registrar Grupo</a>
+          </li>
+          <li>
+            <a [routerLink]='["/grupo-lis"]'>Consultar Grupos</a>
+          </li>
+
+        </ul>
+      </li>
+
+
+      <li class="active" *ngIf="isAuthenticatedRole('Docente')">
+        <a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Estudiante</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu5">
+          <li>
+            <a [routerLink]='["estudiante-carga"]'> Registrar Estudiante</a>
+          </li>
+          <li>
+            <a [routerLink]='["estudiante-lis"]'>Consultar Estudiantes</a>
+          </li>
+
+        </ul>
+      </li>
+    </ul>
+
+    <ul class="list-unstyled components" *ngIf="!isAuthenticated()">
+      <p>Plan de Desarrollo de Asignatura </p>
+    </ul>
+
+  </nav>
+
+
+
+  <!-- Page Content -->
+  <div id="content">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-success">
+                <i class="fas fa-align-left"></i>
+                <span>☰</span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-align-justify"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav ml-auto" *ngIf="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" (click)="logout()" title="Logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">USUARIO: {{ userName() }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">NOMBRE: {{ nameUser() }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ROL: {{ rolUser() }}</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav ml-auto" *ngIf="!isAuthenticated()">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" [routerLink]='["/logear"]'>Login</a>
+                        </li>
+                </ul>
+            </div>
         </div>
-      </div>
+    </nav>
 
-
-        <!-- Accordion de PlanAsignatura-->
-    <div class="section">
-        <input type="radio" name="accordion-1" id="section-6" value="toggle" />
-        <label for="section-6"> <i class="fa fa-pencil-square-o"></i> <span>PlanAsignatura</span></label>
-        <div class="content">
-          <ul>
-            <li routerLink="/planAsignatura-add"><i class="fa fa-plus-circle"></i><span>Registrar Plan</span></li>
-            <li routerLink="/ejeTematico-lis"><i class="fa fa-search"></i><span>Consulta Ejes</span></li>
-          </ul>
-        </div>
-      </div>
-
-       <!-- Accordion de Grupos-->
-    <div class="section">
-      <input type="radio" name="accordion-1" id="section-7" value="toggle" />
-      <label for="section-7"> <i class="fa fa-pencil-square-o"></i> <span>Grupos</span></label>
-      <div class="content">
-        <ul>
-          <li routerLink="/grupo-add"><i class="fa fa-plus-circle"></i><span>Registrar Grupos</span></li>
-          <li routerLink="/grupo-lis"><i class="fa fa-search"></i><span>Consulta Grupos</span></li>
-        </ul>
-      </div>
-    </div>
-
-
-    <!-- Accordion de Estudiantes-->
-    <div class="section">
-      <input type="radio" name="accordion-1" id="section-8" value="toggle" />
-      <label for="section-8"> <i class="fa fa-pencil-square-o"></i> <span>Estudiantes</span></label>
-      <div class="content">
-        <ul>
-          <li routerLink="/estudiante-carga"><i class="fa fa-plus-circle"></i><span>Registrar Estudiante</span></li>
-          <li routerLink="/estudiante-carga"><i class="fa fa-search"></i><span>Consultar Estudiante</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="section">
-      <input type="radio" name="accordion-1" id="section-7" value="toggle" />
-      <label for="section-7"> <span>Section 5</span></label>
-      <div class="content"></div>
-    </div>
-
-
-  </div>
-</div>
-0
 <router-outlet></router-outlet>
+    
+</div>
+
+
+
+</div>

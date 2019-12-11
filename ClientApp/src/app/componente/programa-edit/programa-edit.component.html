@@ -6,52 +6,79 @@
             <div>
                 <h1 class="h2">Detalle de Programa</h1>
             </div>
-
+<br>
             <div class="form-group">
                 <label style="color: rgb(0, 0, 0); font-size: 18px; font-weight: bold;">Codigo:
-                    {{programa.programa_id}}
+                    {{programa.programaId}}
                 </label>
             </div>
+<br><br>
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Facultad:</label>
+                </div>
+                <div class="col-sm-8">
 
-            <div class="form-group">
-                <label>Facultad:
                     <input [(ngModel)]="programa.facultad.nombre" class="form-control" placeholder="digite titulo"
-                        type="text" readonly/>
-                </label>
+                        type="text" readonly />
+                </div>
             </div>
+<br>
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Programa:</label>
+                </div>
+                <div class="col-sm-8">
 
-            <div class="form-group">
-                <label>Programa:
                     <input [(ngModel)]="programa.nombrePro" class="form-control" placeholder="digite titulo"
                         type="text" />
-                </label>
+                </div>
             </div>
+<br>
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Duracion semestral:</label>
+                </div>
+                <div class="col-sm-8">
 
-            <div class="form-group">
-                <label>Duracion semestral:
                     <input [(ngModel)]="programa.duracionSementral" class="form-control" placeholder="digite titulo"
                         type="number" />
-                </label>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label>Horario:
+<br>
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Horario: </label>
+                </div>
+                <div class="col-sm-8">
                     <input [(ngModel)]="programa.horario" class="form-control" placeholder="digite titulo"
                         type="text" />
-                </label>
+                </div>
             </div>
+<br>
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Metodologia:</label>
+                </div>
+                <div class="col-sm-8">
 
-            <div class="form-group">
-                <label>Metodologia:
                     <input [(ngModel)]="programa.metodologia" class="form-control" placeholder="digite titulo"
                         type="text" />
-                </label>
+                </div>
             </div>
 
-            <div class="form-group">
-                <button (click)="update()" class="btn btn-success" style="background: rgb(101, 141, 20)">Actualizar</button>
-                
-                <button (click)="delete()" class="btn btn-success" style="background: rgb(148, 9, 9)">Eliminar</button>
+            <br><br>
+            <div class="row separar">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-2">
+                    <button (click)="update()" class="btn btn-success"
+                        style="background: rgb(101, 141, 20)">Actualizar</button>
+                </div>
+                <div class="col-sm-2">
+                    <button (click)="delete()" class="btn btn-success"
+                        style="background: rgb(184, 4, 4)">Eliminar</button>
+                </div>
             </div>
         </div>
 

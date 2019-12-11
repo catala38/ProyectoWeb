@@ -1,6 +1,6 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-    <div class="panel panel-primary" style="width:50%; margin:auto">
+    <div class="panel panel-primary" style="width:70%; margin:auto">
         <br><br>
         <div class="panel-heading">Registro de Programas</div>
         <br>
@@ -72,20 +72,23 @@
                     <label>Metodologia: </label>
                 </div>
                 <div class="col-sm-10">
-                    <input [(ngModel)]="programa.metodologia" formControlName="metodologia" class="form-control"
+                    <textarea [(ngModel)]="programa.metodologia" formControlName="metodologia" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f.metodologia.errors }" placeholder="digite metodologia"
-                        type="text" />
+                        type="text" ></textarea>
                     <div *ngIf="submitted && f.metodologia.errors" class="invalid-feedback">
                         <div *ngIf="f.metodologia.errors.required">Titulo es requerido</div>
                     </div>
                 </div>
             </div>
-
+<br><br>
             <div class="row separar">
-                <div class="col-sm-3"> </div>
-                <div class="col-sm-8">
+                    <div class="col-sm-8"> 
+                    </div>
+                <div class="col-sm-2"> 
+                        <button class="btn btn-secondary" type="reset" (click)="onReset()">Limpiar</button>
+                </div>
+                <div class="col-sm-2">
                     <button class="btn btn-primary"  style="background: rgb(101, 141, 20)">Agregar</button>
-                    <button class="btn btn-secondary" type="reset" (click)="onReset()">Limpiar</button>
                 </div>
             </div>
 

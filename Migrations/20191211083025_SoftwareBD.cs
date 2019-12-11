@@ -45,34 +45,6 @@ namespace ProyectoV2.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Estudiantes",
-                columns: table => new
-                {
-                    IdEstudiante = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Identificacion = table.Column<string>(nullable: true),
-                    PrimerNombre = table.Column<string>(nullable: true),
-                    SegundoNombre = table.Column<string>(nullable: true),
-                    PrimerApellido = table.Column<string>(nullable: true),
-                    SegundoApellido = table.Column<string>(nullable: true),
-                    Correo = table.Column<string>(nullable: true),
-                    CargaId = table.Column<int>(nullable: false),
-                    CargaAcademicaid = table.Column<int>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    Rol = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Estudiantes", x => x.IdEstudiante);
-                    table.ForeignKey(
-                        name: "FK_Estudiantes_CargaAcademicas_CargaAcademicaid",
-                        column: x => x.CargaAcademicaid,
-                        principalTable: "CargaAcademicas",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Programas",
                 columns: table => new
                 {
@@ -213,6 +185,31 @@ namespace ProyectoV2.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Estudiantes",
+                columns: table => new
+                {
+                    EstudianteId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Identificacion = table.Column<string>(nullable: false),
+                    PrimerNombre = table.Column<string>(nullable: false),
+                    SegundoNombre = table.Column<string>(nullable: true),
+                    PrimerApellido = table.Column<string>(nullable: false),
+                    SegundoApellido = table.Column<string>(nullable: true),
+                    Correo = table.Column<string>(nullable: true),
+                    GrupoId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Estudiantes", x => x.EstudianteId);
+                    table.ForeignKey(
+                        name: "FK_Estudiantes_Grupos_GrupoId",
+                        column: x => x.GrupoId,
+                        principalTable: "Grupos",
+                        principalColumn: "GrupoId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Asignaturas_programaId",
                 table: "Asignaturas",
@@ -229,9 +226,9 @@ namespace ProyectoV2.Migrations
                 column: "AsignaturaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Estudiantes_CargaAcademicaid",
+                name: "IX_Estudiantes_GrupoId",
                 table: "Estudiantes",
-                column: "CargaAcademicaid");
+                column: "GrupoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Grupos_AsignaturaId",
@@ -260,22 +257,22 @@ namespace ProyectoV2.Migrations
                 name: "Administradores");
 
             migrationBuilder.DropTable(
-                name: "Estudiantes");
+                name: "CargaAcademicas");
 
             migrationBuilder.DropTable(
-                name: "Grupos");
+                name: "Estudiantes");
 
             migrationBuilder.DropTable(
                 name: "Temas");
 
             migrationBuilder.DropTable(
-                name: "CargaAcademicas");
-
-            migrationBuilder.DropTable(
-                name: "Docentes");
+                name: "Grupos");
 
             migrationBuilder.DropTable(
                 name: "EjeTematicos");
+
+            migrationBuilder.DropTable(
+                name: "Docentes");
 
             migrationBuilder.DropTable(
                 name: "Asignaturas");

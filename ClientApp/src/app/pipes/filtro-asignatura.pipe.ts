@@ -14,8 +14,3 @@ export class FiltroAsignaturaPipe implements PipeTransform {
   }
 
 }
-
-
-
-
-

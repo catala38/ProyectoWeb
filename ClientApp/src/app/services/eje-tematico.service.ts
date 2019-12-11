@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { EjeTematico } from '../models/eje-tematico';
+import { HandleErrorService } from './handle-error.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,12 +16,12 @@ const httpOptions = {
 
 export class EjeTematicoService {
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string,private handleErrorService: HandleErrorService) { }
 
   addCliente(ejetematico: EjeTematico): Observable<EjeTematico> {
     return this.http.post<EjeTematico>(this.baseUrl + 'api/ejetematico', ejetematico, httpOptions).pipe(
-      tap((newEjeTematico: EjeTematico) => this.log(`Se agregó una eje w/ id=${newEjeTematico.ejeId}`)),
-      catchError(this.handleError<EjeTematico>('addCliente'))
+      tap(_ => this.handleErrorService.log('datos enviados')),
+      catchError(this.handleErrorService.handleError<EjeTematico>('Registro eje',null))
     );
   }
 
@@ -34,8 +35,8 @@ export class EjeTematicoService {
   get(id: string): Observable<EjeTematico> {
     const url = `${this.baseUrl + 'api/ejetematico'}/${id}`;
     return this.http.get<EjeTematico>(url).pipe(
-      tap(_ => console.log(`fetched cliente id=${id}`)),
-      catchError(this.handleError<EjeTematico>(`getHero id=${id}`))
+      tap(_ => this.handleErrorService.log('datos enviados')),
+      catchError(this.handleErrorService.handleError<EjeTematico>('Cuenta Service', null))
     );
   }
   update(ejetematico: EjeTematico): Observable<any> {

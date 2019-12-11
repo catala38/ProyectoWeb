@@ -6,12 +6,12 @@
     
         .panel-heading {
             text-align: center;
-            font-size: 18px;
+            font-size: 25px;
             font-weight: bold;
         }
     </style>
     
-    <div class="panel panel-primary" style="width:50%; margin:auto">
+    <div class="panel panel-primary" style="width:70%; margin:auto">
         <br><br><br>
         <div class="panel-heading">Consultar Docentes</div>
         <div class="panel-body">
@@ -37,15 +37,13 @@
             <hr style="color: #000000" />
             <br>
     
-            <table class="table">
+            <table class="table table-bordered">
                 <thead class="thead-striped">
                     <tr>
                         <th scope="col">Programa</th>
                         <th scope="col">Identificacion</th>
-                        <th scope="col">Primer Nombre</th>
-                        <th scope="col">Segundo Nombre</th>
-                        <th scope="col">Primer Apellido</th>
-                        <th scope="col">Segundo Apellido</th>
+                        <th scope="col">Nombres</th>
+                        <th scope="col">Apellidos</th>
                         <th scope="col">Correo</th>
                         <th scope="col">Telefono</th>
                         <th scope="col">Ver</th>
@@ -55,10 +53,8 @@
                 <tr *ngFor="let a of docentes">
                     <td>{{a.programa.nombrePro}}</td>
                     <td>{{a.identificacion}}</td>
-                    <td>{{a.primerNombre}}</td>
-                    <td>{{a.segundoNombre}}</td>
-                    <td>{{a.primerApellido}}</td>
-                    <td>{{a.segundoApellido}}</td>
+                    <td>{{a.primerNombre}} {{a.segundoNombre}}</td>
+                    <td>{{a.primerApellido}} </td>
                     <td>{{a.correo}}</td>
                     <td>{{a.telefono}}</td>
                     <td><a routerLink="/docente-edit/{{a.identificacion}}">Editar</a></td>

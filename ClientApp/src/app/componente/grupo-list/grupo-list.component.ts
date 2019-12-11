@@ -22,21 +22,16 @@ cargas:CargaAcademica[];
 
   
   ngOnInit() {
-    this.getCargas();
-    //this.getGrupos();
+    this.getAll();
   }
 
 
   
   
-  /*getGrupos(){
+  getAll(){
     this.grupoService.getAll().subscribe(grupos => this.grupos = grupos);
-  }*/
-
-  getCargas(){
-    this.cargaAcademicaService.getAll().subscribe(cargas => this.cargas = cargas);
   }
-  
+
 
 
 }

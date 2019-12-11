@@ -7,6 +7,8 @@ import { Facultad } from 'src/app/models/facultad';
 import { FacultadService } from 'src/app/services/facultad.service';
 import { isUndefined } from 'util';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertModalComponent } from '../alert-modal/alert-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -23,7 +25,11 @@ export class AsignaturaAddComponent implements OnInit {
   programas: Programa[];
   havePrograma: boolean;
 
-  constructor(private asignaturaService: AsignaturaService, private programaService: ProgramaService, private facultadService: FacultadService, private formBuilder: FormBuilder) { }
+  constructor(private asignaturaService: AsignaturaService, 
+    private programaService: ProgramaService, 
+    private facultadService: FacultadService, 
+    private formBuilder: FormBuilder,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.programa = new Programa();
@@ -67,11 +73,21 @@ export class AsignaturaAddComponent implements OnInit {
 
   add() {
     this.asignatura.programa = this.programa;
-    console.log(this.asignatura);
     if (this.havePrograma) {
-      this.asignaturaService.addCliente(this.asignatura).subscribe();
-    }
+      this.asignaturaService.addCliente(this.asignatura).subscribe(rest => {
 
+        if (rest!=null) {
+          this.asignaturaService.addCliente(this.asignatura).subscribe();
+          const messageBox = this.modalService.open(AlertModalComponent)
+          messageBox.componentInstance.title = "Resultado Operación";
+          messageBox.componentInstance.message = 'Asignatura guardada con exito';
+        } else {
+          const messageBox = this.modalService.open(AlertModalComponent)
+          messageBox.componentInstance.title = "Resultado Operación";
+          messageBox.componentInstance.message = 'no se pudo guardar esa asignatura';
+        }
+      });
+    }
   }
 
   get f() { return this.registerForm.controls; }

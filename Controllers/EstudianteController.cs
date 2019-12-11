@@ -32,16 +32,16 @@ namespace ProyectoV2.Controllers
 
         public async Task<ActionResult<IEnumerable<Estudiante>>> Get()
         {
-            return await _context.Estudiantes.Include(t => t.CargaAcademica).ToListAsync();
+            return await _context.Estudiantes.Include(t => t.Grupo).ToListAsync();
         }
 
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Estudiante>> GetEstudianteItem(string id)
+        public async Task<ActionResult<Estudiante>> GetEstudianteItem(int id)
         {
             
-            var estudiante = await _context.Estudiantes.Include(t => t.CargaAcademica)
-            .FirstOrDefaultAsync(t => t.Identificacion==id);
+            var estudiante = await _context.Estudiantes.Include(t => t.Grupo)
+            .FirstOrDefaultAsync(t => t.EstudianteId==id);
             if (estudiante == null)
             {
                 return NotFound();
@@ -51,23 +51,26 @@ namespace ProyectoV2.Controllers
 
 
 
-        // POST: api/Task
-        [HttpPost]
+
+         [HttpPost]
         public async Task<ActionResult<Estudiante>> PostEstudianteItem(Estudiante item)
         {
-           
+            if (item.Grupo != null)
+            {
+                item.GrupoId = item.Grupo.GrupoId;
+                item.Grupo = null;
+            }
           
             _context.Estudiantes.Add(item);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetEstudianteItem), new { id = item.Identificacion}, item);
+            return CreatedAtAction(nameof(GetEstudianteItem), new { id = item.EstudianteId}, item);
 
         }
 
-
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEstudianteItem(string id, Estudiante item)
+        public async Task<IActionResult> PutEstudianteItem(int id, Estudiante item)
         {
-            if (id != item.Identificacion)
+            if (id != item.EstudianteId)
             {
                 return BadRequest();
             }
@@ -76,10 +79,17 @@ namespace ProyectoV2.Controllers
             return NoContent();
         }
 
+      
+  [HttpGet("Grupo={GrupoId}")]
+        
+        public async Task<ActionResult<IEnumerable<Estudiante>>> GetEstudianteByGrupo(int GrupoId)
+        {
+            return await _context.Estudiantes.Where(t=>t.GrupoId==GrupoId).Include(t => t.Grupo).ToListAsync();
+        }
 
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEstudianteItem(string id)
+        public async Task<IActionResult> DeleteEstudianteItem(int id)
         {
             var estudiante = await _context.Estudiantes.FindAsync(id);
             if (estudiante == null)

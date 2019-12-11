@@ -24,6 +24,7 @@ import { DocenteEditComponent } from './componente/docente-edit/docente-edit.com
 import {ReactiveFormsModule} from '@angular/forms';
 import { FiltroProgramaPipe } from './pipes/filtro-programa.pipe';
 import { FiltroAsignaturaPipe } from './pipes/filtro-asignatura.pipe';
+import { NavBarComponent } from './componente/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { FiltroAsignaturaPipe } from './pipes/filtro-asignatura.pipe';
     DocenteListComponent,
     DocenteEditComponent,
     FiltroProgramaPipe,
-    FiltroAsignaturaPipe
+    FiltroAsignaturaPipe,
+    NavBarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

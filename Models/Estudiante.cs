@@ -8,24 +8,25 @@ namespace ProyectoV2.Models
     public class Estudiante
     {
         [Key]
-        public int IdEstudiante { get; set; }
+        public int EstudianteId { get; set; }
+        
+        [Required]
         public string Identificacion { get; set; }
+
+        [Required]
         public string PrimerNombre { get; set; }
+
         public string SegundoNombre { get; set; }
+
+        [Required]
         public string PrimerApellido { get; set; }
+
         public string SegundoApellido { get; set; }
+
         public string Correo { get; set; }
 
-          public int CargaId { get; set; }
+        public int GrupoId { get; set; }
 
-        public CargaAcademica CargaAcademica { get; set; }
-        
-        public string Password { get; set; }
-
-        public string Rol { get; set; }
-
-
-
-       
+        public Grupo Grupo { get; set; }
     }
 }
