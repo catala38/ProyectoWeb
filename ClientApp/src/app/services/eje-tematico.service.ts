@@ -39,6 +39,10 @@ export class EjeTematicoService {
       catchError(this.handleErrorService.handleError<EjeTematico>('Cuenta Service', null))
     );
   }
+
+
+  
+
   update(ejetematico: EjeTematico): Observable<any> {
     const url = `${this.baseUrl + 'api/ejetematico'}/${ejetematico.ejeId}`;
     return this.http.put(url, ejetematico, httpOptions).pipe(

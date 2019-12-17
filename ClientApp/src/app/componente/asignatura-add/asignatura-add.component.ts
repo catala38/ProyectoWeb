@@ -21,6 +21,7 @@ export class AsignaturaAddComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   asignatura: Asignatura;
+  asignaturas:Asignatura [];
   programa: Programa;
   programas: Programa[];
   havePrograma: boolean;
@@ -39,7 +40,7 @@ export class AsignaturaAddComponent implements OnInit {
       Nombre: ['', [Validators.required, Validators.minLength(3)]],
       Ncreditos: ['', Validators.required],
       PreRequisitos: ['', Validators.required],
-      CoRequisitos: ['', Validators.required],
+      CoRequisitos: [''],
       Tipo: ['', Validators.required],
       NatAsignatura1: ['', Validators.required],
       NatAsignatura2: ['', Validators.required],
@@ -54,12 +55,12 @@ export class AsignaturaAddComponent implements OnInit {
     this.programaService.getAll().subscribe(programas => this.programas = programas);
   }
 
- 
-
 
   mostrar() {
 
     var num1 = ((document.getElementById("referencia") as HTMLInputElement).value);
+    this.asignaturaService.getAsignaturasByProgramas(parseInt(num1)).subscribe(asignaturas => this.asignaturas = asignaturas);
+
     if (num1 != "Seleccione...") {
       this.programaService.get(parseInt(num1))
         .subscribe(programa => {

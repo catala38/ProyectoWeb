@@ -62,16 +62,7 @@ namespace ProyectoV2.Controllers
             .ToListAsync();
         }
 
-        [HttpGet("id")]
-
-        public async Task<ActionResult<IEnumerable<Grupo>>> GetGrupoByAD(int id, Grupo item)
-        {
-            return await _context.Grupos
-            .Include(t => t.Asignatura)
-            .Include(t => t.Docente)
-            .Where(t=>t.DocenteId==item.identificacion && t.AsignaturaId==item.asignaturaId)
-            .ToListAsync();
-        }
+     
 
        
 

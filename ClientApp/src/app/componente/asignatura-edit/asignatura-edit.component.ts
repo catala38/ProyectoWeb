@@ -29,6 +29,8 @@ export class AsignaturaEditComponent implements OnInit {
       this.route.snapshot.paramMap.get('id');
     this.asignaturaService.get(id).subscribe(hero => this.asignatura = hero);
   }
+
+  
   update(): void {
     this.asignaturaService.update(this.asignatura)
       .subscribe(() => this.goBack());

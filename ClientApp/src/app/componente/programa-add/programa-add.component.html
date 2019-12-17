@@ -69,14 +69,17 @@
 
             <div class="row separar">
                 <div class="col-sm-2">
-                    <label>Metodologia: </label>
+                    <label>Metodologia:  </label>
                 </div>
                 <div class="col-sm-10">
-                    <textarea [(ngModel)]="programa.metodologia" formControlName="metodologia" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.metodologia.errors }" placeholder="digite metodologia"
-                        type="text" ></textarea>
+                    <select [(ngModel)]="programa.metodologia" class="form-control" formControlName="metodologia"
+                        [ngClass]="{ 'is-invalid': submitted && f.metodologia.errors }">
+                        <option value="">Seleccionar</option>
+                        <option value="Presencial">Presencial</option>
+                        <option value="Virtual">Virtual</option>
+                    </select>
                     <div *ngIf="submitted && f.metodologia.errors" class="invalid-feedback">
-                        <div *ngIf="f.metodologia.errors.required">Titulo es requerido</div>
+                        <div *ngIf="f.metodologia.errors.required">Por favor, Seleccione una metodologia</div>
                     </div>
                 </div>
             </div>
@@ -94,5 +97,4 @@
 
         </div>
     </div>
-
 </form>

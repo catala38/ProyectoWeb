@@ -1,47 +1,52 @@
 <style>
-        .separar {
-            padding: 10px;
-        }
-    
-        .panel-heading {
-            text-align: center;
-            font-size: 25px;
-            font-weight: bold;
-        }
-    
-        .btn {
-            float: right;
-        }
-</style>
-    
-    
-    <div class="panel panel-primary" style="width:50%; margin:auto">
-        <br><br>
-        <div class="panel-heading">Consulta de Plan de Asignatura</div>
-        <br><br>
-        <div class="panel-body">
+    .separar {
+        padding: 10px;
+    }
 
-                <table class="table table-bordered">
-                        <thead class="thead-striped">
-                            <tr>
-                                <th scope="col">Asignatura</th>
-                                <th scope="col">EjeTematico</th>
-                                <th scope="col">TemaDocenciaDirecta</th>
-            
-                            </tr>
-                        </thead>
-            
-                        <tr *ngFor="let e of ejeTematicos">
-                            <td>{{e.asignatura.nombre}}</td>
-                            <td>{{e.nombre}}</td>
-                            <td>
-                        <tr *ngFor="let t of e.temas">
-                            <td>{{t.nombre}}</td>
-                        </tr>
-                        </td>
-                        </tr>
-                      
-                    </table>
-            
-        </div>
+    .panel-heading {
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .btn {
+        float: right;
+    }
+</style>
+
+
+<div class="panel panel-primary" style="width:50%; margin:auto">
+    <br><br>
+    <div class="panel-heading">Consulta de Plan de Asignatura</div>
+    <br><br>
+    <div class="panel-body">
+
+      
+
+<br><br>
+        <img src="assets/img/encabezado.PNG" style="width:700px; height: 120px">
+        <table class="table table-bordered">
+
+            <thead class="thead-striped">
+                <tr>
+                    <th scope="col">Asignatura</th>
+                    <th scope="col">EjeTematico</th>
+                    <th scope="col">TemaDocenciaDirecta</th>
+
+                </tr>
+            </thead>
+
+            <tr *ngFor="let e of ejeTematicos">
+                <td>{{e.asignatura.nombre}}</td>
+                <td>{{e.nombre}}</td>
+                <td>
+            <tr *ngFor="let t of e.temas">
+                <td>{{t.nombre}}</td>
+            </tr>
+            </td>
+            </tr>
+
+        </table>
+
     </div>
+</div>

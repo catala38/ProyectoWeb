@@ -1,69 +1,82 @@
 <div class="panel panel-primary"
-        style="width: 50%; margin:auto; margin-top: auto; background-color: rgba(255, 255, 255, 0.8)">
-        <div class="panel-heading" ></div>
-        <div class="panel-body">
-            <div class="row separar">
-                <div class="col-sm-12">
-                    <h1 class="textomod">Login</h1>
-                    <hr class="bg-info">
-                    
-                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    style="width: 50%; margin:auto; margin-top: auto; background-color: rgba(255, 255, 255, 0.8)">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+        <div class="row separar">
+            <div class="col-sm-12">
+                <h1 class="textomod">Login</h1>
+                <hr class="bg-info">
+
+
+                <div class="row botonesayuda">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-8">
+                        <img style="align-self: center;" src="assets/img/user.png" style="width:210px; height: 160px">
+                    </div>
+                </div>
+                <br>
+                <div class="alert alert-success" role="alert">
+                    El usuario corresponde a su Identificacion.
+                  </div>
+
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                     <div class="row separar panel-heading">
                         <div class="col-sm-12">
                             <label>Usuario:</label>
                         </div>
                         <div class="col-sm-12">
-                                <input [(ngModel)]="logear.usuario" formControlName="usuario" (blur)="get()" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.usuario.errors }" placeholder="Usuario"
-                                type="text" />
-                                <div *ngIf="submitted && f.usuario.errors" class="invalid-feedback">
-                                        <div *ngIf="f.usuario.errors.required">Usuario requerido</div>
-                                </div>
+                            <input [(ngModel)]="logear.usuario" formControlName="usuario" (blur)="get()"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.usuario.errors }"
+                                placeholder="Usuario" type="text" />
+                            <div *ngIf="submitted && f.usuario.errors" class="invalid-feedback">
+                                <div *ngIf="f.usuario.errors.required">Usuario requerido</div>
+                            </div>
                         </div>
                         <br><br>
                         <div class="col-sm-12">
                             <label>Contraseña:</label>
                         </div>
                         <div class="col-sm-12">
-                                <input [(ngModel)]="logear.contra" formControlName="contra" (blur)="get()" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.contra.errors }" placeholder="Contraseña"
-                                type="password" />
-                                <div *ngIf="submitted && f.usuario.errors" class="invalid-feedback">
-                                        <div *ngIf="f.usuario.errors.required">Contraseña requerida</div>
-                                </div>
+                            <input [(ngModel)]="logear.contra" formControlName="contra" (blur)="get()"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contra.errors }"
+                                placeholder="Contraseña" type="password" />
+                            <div *ngIf="submitted && f.usuario.errors" class="invalid-feedback">
+                                <div *ngIf="f.usuario.errors.required">Contraseña requerida</div>
+                            </div>
                         </div>
                     </div>
-<br>
+                    <br>
                     <div class="estilo">
                         <div class="col-sm-12">
                             <label>Rol:</label>
                         </div>
                     </div>
-                    
-                <div class="col-sm-12">
-                    <select [(ngModel)]= "logear.rol" formControlName="rol" (blur)="get()" class="form-control">
-                        <option selected="selected">
-                            Seleccione...
-                        </option>
-                        <option value="Administrador">Administrador</option>
-                        <option value="Docente">Docente</option>
-                    </select>
-                </div>
+
+                    <div class="col-sm-12">
+                        <select [(ngModel)]="logear.rol" formControlName="rol" (blur)="get()" class="form-control">
+                            <option selected="selected">
+                                Seleccione...
+                            </option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Docente">Docente</option>
+                        </select>
+                    </div>
 
                     <br>
                     <div class="row botonesayuda">
-                        
-                    <div class="col-sm-7">
+
+                        <div class="col-sm-7">
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-success">Logear</button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-secondary" type="reset" (click)="onReset()">Limpiar</button>
+                        </div>
                     </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-success" >Logear</button>
-                    </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-secondary" type="reset" (click)="onReset()">Limpiar</button>
-                    </div>
-                    </div>
-                  </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+</div>

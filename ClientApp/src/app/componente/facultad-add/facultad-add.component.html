@@ -1,41 +1,73 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="panel panel-primary" style="width:70%; margin:auto">
-        <div class="panel-heading" style="font-size: 20px; font-weight: bold; color: rgb(0, 0, 0);">Registro de
-            falcultad</div>
-        <div class="panel-body">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="panel-group">
+
+
+
+
+      <div class="panel panel-success" >
+
+        <div class="panel-heading" style="font-size: 25px;">Registro de falcultad</div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+
+          <div class="panel-heading" style="font-size: 20px; font-weight: bold; color: rgb(0, 0, 0);"></div>
+          <div class="panel-body">
             <br><br><br>
 
             <div class="row separar">
-                <div class="col-sm-4">
-                    <label>Nombre de la falcultad:</label>
+              <div class="col-sm-3">
+                <label style="font-size: 15px;"> Nombre de la falcultad:</label>
+              </div>
+              <div class="col-sm-8">
+                <input [(ngModel)]="facultad.nombre" formControlName="nombre" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" placeholder="digite nombre" type="text" />
+                <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                  <div *ngIf="f.nombre.errors.required">Nombre es requerido</div>
+                  <div *ngIf="f.nombre.errors.minlength">Nombre requiere minimo 3 caracteres</div>
                 </div>
-                <div class="col-sm-7">
-                    <input [(ngModel)]="facultad.nombre" formControlName="nombre" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" placeholder="digite nombre"
-                        type="text" />
-                    <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
-                        <div *ngIf="f.nombre.errors.required">Nombre es requerido</div>
-                        <div *ngIf="f.nombre.errors.minlength">Nombre requiere minimo 3 caracteres</div>
-                    </div>
 
-                </div>
+              </div>
 
             </div>
             <br>
 
             <div class="row separar">
-                <div class="col-sm-7">
-                </div>
-                <div class="col-sm-2">
-                    <button class="btn btn-secondary" type="reset" (click)="onReset()">Limpiar</button>
-                </div>
-                <div class="col-sm-2">
-                    <button class="btn btn-primary" style="background: rgb(101, 141, 20)">Agregar</button>
-                </div>
+              <div class="col-sm-7">
+              </div>
+              <div class="col-sm-2">
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Limpiar</button>
+              </div>
+              <div class="col-sm-2">
+                <button class="btn btn-primary" style="background: rgb(101, 141, 20)">Agregar</button>
+              </div>
             </div>
 
+<br><br><br>
+          </div>
 
-        </div>
+        </form>
+      </div>
+
+
+
     </div>
-</form>
+  </div>
+
+</body>
+
+</html>

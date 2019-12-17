@@ -65,5 +65,8 @@ namespace ProyectoV2.Controllers
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetAdministradorItem), new { id =item.Usuario }, item);
         }
+
+
+        
     }
 }

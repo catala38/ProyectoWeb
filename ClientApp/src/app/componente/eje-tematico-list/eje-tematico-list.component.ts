@@ -12,7 +12,7 @@ import { AsignaturaService } from 'src/app/services/asignatura.service';
   styleUrls: ['./eje-tematico-list.component.css']
 })
 export class EjeTematicoListComponent implements OnInit {
-
+asignatura:Asignatura;
   asignaturas:Asignatura[];
   programas:Programa[];
   ejeTematicos:EjeTematico[];
@@ -23,11 +23,28 @@ export class EjeTematicoListComponent implements OnInit {
 
   ngOnInit() {
     this.getEjes();
+    this.getAsignaturas();
   }
 
   
   getEjes() {
     this.ejeTematicoService.getAll().subscribe(ejeTematicos => this.ejeTematicos = ejeTematicos);
   }
+
+  getAsignaturas(){
+
+    this.asignaturaService.getAll().subscribe(asignaturas => this.asignaturas = asignaturas);
+
+  }
+
+
+  getAsignatura()
+{
+  var asig = ((document.getElementById("referencia") as HTMLInputElement).value);
+  this.asignaturaService.get(asig) .subscribe(hero => this.asignatura = hero);
+
   
+}
+
+
 }

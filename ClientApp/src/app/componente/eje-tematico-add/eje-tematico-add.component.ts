@@ -6,6 +6,8 @@ import { EjeTematico } from 'src/app/models/eje-tematico';
 import { Tema } from 'src/app/models/tema';
 import { TemaService } from 'src/app/services/tema.service';
 import { EjeTematicoService } from 'src/app/services/eje-tematico.service';
+import { AlertModalComponent } from '../alert-modal/alert-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-eje-tematico-add',
@@ -21,7 +23,8 @@ temas:Tema[];
     private route: ActivatedRoute,
     private asignaturaService: AsignaturaService,
     private temaService:TemaService,
-    private ejeService:EjeTematicoService
+    private ejeService:EjeTematicoService,
+    private modalService: NgbModal
     //private location: Location
   ) { }
 
@@ -40,13 +43,20 @@ temas:Tema[];
     this.temas=this.temaService.getTemas();
   }
   addTema(){
-    if(this.tema.nombre!=""){
+  
+    if (this.tema.nombre!="") {
+      const messageBox = this.modalService.open(AlertModalComponent)
+      messageBox.componentInstance.title = "Resultado Operación";
+      messageBox.componentInstance.message = 'guardada con exito';
       this.temaService.addTema(this.tema);
       this.getTemas();
-    }else{
-      console.log(this.tema);
-      alert("digite el nombre");
+
+    } else {
+      const messageBox = this.modalService.open(AlertModalComponent)
+      messageBox.componentInstance.title = "Resultado Operación";
+      messageBox.componentInstance.message = 'No se pudo guardar ';
     }
+    
     
   }
   addEje(){
@@ -56,8 +66,10 @@ temas:Tema[];
     this.ejeTematico.asignatura=this.asignatura;
 
     this.ejeService.addCliente(this.ejeTematico).subscribe(rest=>{
+    
       sessionStorage.removeItem("temas")
       this.getTemas();
+      
     });
    
   }

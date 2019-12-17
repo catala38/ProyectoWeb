@@ -41,7 +41,7 @@ namespace ProyectoV2.Controllers
             return await _context.Asignaturas.Include(t => t.Programa).ToListAsync();
         }
         
-  [HttpGet("programa={ProgramaId}")]
+       [HttpGet("programa={ProgramaId}")]
         
         public async Task<ActionResult<IEnumerable<Asignatura>>> GetAsignaturasByPrograma(int ProgramaId)
         {
@@ -96,6 +96,7 @@ namespace ProyectoV2.Controllers
             return NoContent();
         }
 
+  
 
 
         [HttpDelete("{id}")]

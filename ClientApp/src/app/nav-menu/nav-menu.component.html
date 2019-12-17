@@ -14,7 +14,8 @@
           aria-hidden="true">Facultad</a>
         <ul class="collapse list-unstyled" id="homeSubmenu">
           <li>
-            <a [routerLink]='["/facultad-add"]'>Registrar Facultad</a>
+              
+            <a  [routerLink]='["/facultad-add"]'>Registrar Facultad ☰</a>
           </li>
           <li>
             <a [routerLink]='["/facultad-lis"]'>Consultar Facultades</a>
@@ -139,6 +140,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">ROL: {{ rolUser() }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://drive.google.com/file/d/1RM4wMLQxmepBaN_5wJ_nwT9386YXJrQu/view?usp=sharing" target="_blank">AYUDA</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto" *ngIf="!isAuthenticated()">
