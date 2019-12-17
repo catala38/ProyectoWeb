@@ -40,7 +40,13 @@ export class EjeTematicoService {
     );
   }
 
-
+  getEjesByAsignaturas(id:string): Observable<EjeTematico[]> {
+    const url = `${this.baseUrl + 'api/ejetematico'}/asignatura=${id}`;
+    return this.http.get<EjeTematico[]>(url).pipe(
+      tap(_ => console.log('Se Consulta la información')),
+      catchError(this.handleError<EjeTematico[]>('getAll', []))
+    );
+  }
   
 
   update(ejetematico: EjeTematico): Observable<any> {

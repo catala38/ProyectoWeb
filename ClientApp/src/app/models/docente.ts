@@ -1,8 +1,8 @@
 import { Programa } from "./programa";
 
 export class Docente {
-
     identificacion:string;
+    tipoId:String;
     primerNombre :string;
     segundoNombre :string;
     primerApellido :string;

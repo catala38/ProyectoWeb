@@ -9,7 +9,7 @@ using ProyectoV2.Models;
 namespace ProyectoV2.Migrations
 {
     [DbContext(typeof(SoftwareContext))]
-    [Migration("20191211083025_SoftwareBD")]
+    [Migration("20191217173856_SoftwareBD")]
     partial class SoftwareBD
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +42,6 @@ namespace ProyectoV2.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CoRequisitos")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NatAsignatura1")
@@ -62,7 +61,6 @@ namespace ProyectoV2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PreRequisitos")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Tipo")
@@ -122,6 +120,10 @@ namespace ProyectoV2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TipoId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -7,8 +7,13 @@ namespace ProyectoV2.Models
     public class Docente
     {
         [Key]
+
         [Required]
         public string Identificacion { get; set; }
+        
+        [Required]
+        public string TipoId { get; set; }
+
         [Required]
         public string PrimerNombre { get; set; }
         public string SegundoNombre { get; set; }

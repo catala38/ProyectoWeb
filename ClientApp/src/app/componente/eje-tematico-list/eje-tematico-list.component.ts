@@ -22,13 +22,13 @@ asignatura:Asignatura;
     private ejeTematicoService:EjeTematicoService) { }
 
   ngOnInit() {
-    this.getEjes();
     this.getAsignaturas();
   }
 
   
-  getEjes() {
-    this.ejeTematicoService.getAll().subscribe(ejeTematicos => this.ejeTematicos = ejeTematicos);
+  getEjesByAsignatura() {
+    var asig = ((document.getElementById("referencia") as HTMLInputElement).value);
+    this.ejeTematicoService.getEjesByAsignaturas(asig).subscribe(ejeTematicos => this.ejeTematicos = ejeTematicos);
   }
 
   getAsignaturas(){
@@ -41,8 +41,8 @@ asignatura:Asignatura;
   getAsignatura()
 {
   var asig = ((document.getElementById("referencia") as HTMLInputElement).value);
-  this.asignaturaService.get(asig) .subscribe(hero => this.asignatura = hero);
-
+  this.asignaturaService.get(asig).subscribe(hero => this.asignatura = hero);
+  this.getEjesByAsignatura()
   
 }
 

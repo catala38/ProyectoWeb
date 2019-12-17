@@ -76,6 +76,17 @@ namespace ProyectoV2.Controllers
 
         }
 
+        [HttpGet("asignatura={asignaturaId}")]
+        
+        public async Task<ActionResult<IEnumerable<EjeTematico>>> GetEjesByAsignatura(string asignaturaId)
+        {
+            return await _context.EjeTematicos.Where(t=>t.AsignaturaId==asignaturaId)
+            .Include(t => t.Asignatura)
+            .Include(t=>t.Temas)
+            .ToListAsync();
+        }
+
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEjeTematicoItem(int id, EjeTematico item)

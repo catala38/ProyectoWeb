@@ -39,8 +39,8 @@ export class AsignaturaAddComponent implements OnInit {
       AsignaturaId: ['', [Validators.required, Validators.minLength(3)]],
       Nombre: ['', [Validators.required, Validators.minLength(3)]],
       Ncreditos: ['', Validators.required],
-      PreRequisitos: ['', Validators.required],
-      CoRequisitos: [''],
+      PreRequisitos: [this.asignatura.PreRequisitos],
+      CoRequisitos: [this.asignatura.CoRequisitos],
       Tipo: ['', Validators.required],
       NatAsignatura1: ['', Validators.required],
       NatAsignatura2: ['', Validators.required],
@@ -68,7 +68,6 @@ export class AsignaturaAddComponent implements OnInit {
           this.havePrograma = true;
         });
     }
-
 
   }
 
@@ -107,8 +106,4 @@ export class AsignaturaAddComponent implements OnInit {
     this.submitted = false;
     this.registerForm.reset();
   }
-
-  
-
-
 }

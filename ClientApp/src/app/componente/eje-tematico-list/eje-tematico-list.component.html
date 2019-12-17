@@ -21,10 +21,24 @@
     <br><br>
     <div class="panel-body">
 
-      
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label style="font-weight: bold;">ASIGNATURA: </label>
+            </div>
+            <div class="col-sm-10">
+                <select class="form-control"  (change)="getAsignatura()" id="referencia" name="referencia">
+                    <option selected="selected">
+                        Seleccione...
+                    </option>
+                    <option *ngFor="let a of asignaturas" [value]="a.asignaturaId">{{a.nombre}}</option>
+                </select>
+            </div>
+        </div>
+<br>
 
-<br><br>
-        <img src="assets/img/encabezado.PNG" style="width:700px; height: 120px">
+
+<br>
+       <!-- <img src="assets/img/encabezado.PNG" style="width:700px; height: 120px">
         <table class="table table-bordered">
 
             <thead class="thead-striped">
@@ -46,7 +60,150 @@
             </td>
             </tr>
 
-        </table>
+        </table>-->
+
+
+        <p>&nbsp;</p>
+<table border="1" cellpadding="0" cellspacing="0" style="width: 100%;">
+    <tbody >
+        <tr>
+            <td rowspan="3">
+                <p><br><img width="75" height="72" src="https://s3-eu-west-1.amazonaws.com/froala-eu/temp_files%2F1576590098952-1576590098952.png" alt="https://lh3.googleusercontent.com/ifDLpZC_sMV_o45gK6tfSSXAu9bNSv-o7puHyrIYxAYL6aoUa686FkN8yBpqAfpwuRA2ruWPnkwukXF0u2dX0oClksmvOrmXKaMpR8c4Rf_H70K6TAQQFSyQqAtchFPSArVYv4AuwFnvEtUQCQ"
+                        class="fr-fic fr-dib"></p>
+            </td>
+            <td rowspan="2">
+                <p style="text-align: center;"><strong>UNIVERSIDAD POPULAR DEL CESAR</strong></p>
+            </td>
+            <td>
+                <p style="text-align: center;">CODIGO: 201-300-PRO05-FOR01</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: center;">VERSI&Oacute;N: 1</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: center;">PLAN DE ASIGNATURA</p>
+            </td>
+            <td>
+                <p style="text-align: center;">P&Aacute;G: 1 de 6</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<table border="1" cellpadding="0" cellspacing="0" style="width: 100%;">
+    <tbody >
+        <tr>
+            <td colspan="2" valign="top" width="100%">
+                <p style="text-align: center;"><strong>IDENTIFICACI&Oacute;N</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="30%">
+                <p style="text-align: center;">Nombre de la asignatura</p>
+            </td>
+            <td valign="top">
+                <p style="text-align: center;"> {{asignatura.nombre}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <p style="text-align: center;">C&oacute;digo de la asignatura</p>
+            </td>
+            <td valign="top" style="text-align: center;">{{asignatura.asignaturaId}}</td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <p style="text-align: center;">Programa Acad&eacute;mico</p>
+            </td>
+            <td valign="top">
+                <p style="text-align: center;">{{asignatura.programa.nombrePro}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <p style="text-align: center;">Cr&eacute;ditos acad&eacute;micos</p>
+            </td>
+            <td valign="top">
+                <p style="text-align: center;">{{asignatura.ncreditos}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <p style="text-align: center;">Pre-requisitos</p>
+            </td>
+            <td valign="top">
+                <p style="text-align: center;">{{asignatura.preRequisitos}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <p style="text-align: center;">Co-requisitos</p>
+            </td>
+            <td valign="top">
+                <p style="text-align: center;">{{asignatura.coRequisitos}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: center;">Tipo de Asignatura</p>
+            </td>
+            <td valign="top">
+                <p style="text-align: center;">{{asignatura.tipo}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+                <p style="text-align: center;">Naturaleza de la Asignatura</p>
+            </td>
+            <td valign="top">
+                <p style="text-align: center;">{{asignatura.natAsignatura1}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <p style="text-align: center;">{{asignatura.natAsignatura2}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" valign="top" width="100%">
+                <p style="text-align: center;"><strong>CONTENIDO</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" valign="top" width="100%">
+                <table class="table table-bordered">
+
+                    <thead class="thead-striped">
+                        <tr>
+                            <th scope="col">EJES TEMATICOS</th>
+                            <th scope="col">TEMAS DE DOCENCIA DIRECTA</th>
+        
+                        </tr>
+                    </thead>
+        
+                    <tr *ngFor="let e of ejeTematicos">
+                        <td>{{e.nombre}}</td>
+                        <td>
+                    <tr *ngFor="let t of e.temas">
+                        <td>{{t.nombre}}</td>
+                    </tr>
+                    </td>
+                    </tr>
+        
+                </table>
+                <p>&nbsp;</p>
+            </td>
+        </tr>
+        
+    </tbody>
+</table>
 
     </div>
 </div>
+
+
+

@@ -28,6 +28,7 @@ export class DocenteAddComponent implements OnInit {
     this.docente = new Docente();
     this.registerForm = this.formBuilder.group({
       identificacion: [this.docente.identificacion, [Validators.required, Validators.minLength(10)]],
+      tipoId:[this.docente.tipoId, Validators.required],
       primerNombre: [this.docente.primerNombre, [Validators.required, Validators.minLength(3)]],
       segundoNombre: this.docente.segundoNombre, 
       primerApellido: [this.docente.primerNombre, [Validators.required, Validators.minLength(3)]],

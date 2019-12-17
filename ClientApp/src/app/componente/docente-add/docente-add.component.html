@@ -33,10 +33,31 @@
         </div>
     </div>
 
+    
+    <div class="row separar">
+        <div class="col-sm-2">
+            <label>Tipo de identificacion: </label>
+        </div>
+        <div class="col-sm-10">
+            <select [(ngModel)]="docente.tipoId" class="form-control" name="tipoId"
+                [ngClass]="{ 'is-invalid': submitted && f.tipoId.errors }">
+                      <option value="">Seleccionar</option>
+                <option value="Cedula de ciudadanía">(CC) Cedula de ciudadanía</option>
+                <option value="Cedula Extranjera">(CE) Cedula Extranjera</option>
+                <option value="Pasaporte">(PA) Pasaporte</option>
+                <option value="Registro Civil">(RC) Registro Civil</option>
+            </select>
+                <div *ngIf="submitted && f.tipoId.errors" class="invalid-feedback">
+                    <div *ngIf="f.tipoId.errors.required">Por favor, Seleccione un Tipo de identificacion</div>
+                </div>
+        </div>
+    </div>
+
+
     <div class="panel-body">
         <div class="row separar">
             <div class="col-sm-2">
-                <label>Identificacion: </label>
+                <label>Numero de Identificacion: </label>
             </div>
             <div class="col-sm-10">
                 <input [(ngModel)]="docente.identificacion" class="form-control" placeholder="Digite identificacion"

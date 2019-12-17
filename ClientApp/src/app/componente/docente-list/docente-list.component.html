@@ -41,6 +41,7 @@
                 <thead class="thead-striped">
                     <tr>
                         <th scope="col">Programa</th>
+                        <th scope="col">Tipo de Identificacion </th>
                         <th scope="col">Identificacion</th>
                         <th scope="col">Nombres</th>
                         <th scope="col">Apellidos</th>
@@ -52,6 +53,7 @@
                 </thead>
                 <tr *ngFor="let a of docentes">
                     <td>{{a.programa.nombrePro}}</td>
+                    <td>{{a.tipoId}}</td>
                     <td>{{a.identificacion}}</td>
                     <td>{{a.primerNombre}} {{a.segundoNombre}}</td>
                     <td>{{a.primerApellido}} </td>

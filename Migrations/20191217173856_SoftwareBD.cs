@@ -74,8 +74,8 @@ namespace ProyectoV2.Migrations
                     AsignaturaId = table.Column<string>(nullable: false),
                     Nombre = table.Column<string>(nullable: false),
                     Ncreditos = table.Column<string>(nullable: false),
-                    PreRequisitos = table.Column<string>(nullable: false),
-                    CoRequisitos = table.Column<string>(nullable: false),
+                    PreRequisitos = table.Column<string>(nullable: true),
+                    CoRequisitos = table.Column<string>(nullable: true),
                     Tipo = table.Column<string>(nullable: false),
                     NatAsignatura1 = table.Column<string>(nullable: false),
                     NatAsignatura2 = table.Column<string>(nullable: false),
@@ -97,6 +97,7 @@ namespace ProyectoV2.Migrations
                 columns: table => new
                 {
                     Identificacion = table.Column<string>(nullable: false),
+                    TipoId = table.Column<string>(nullable: false),
                     PrimerNombre = table.Column<string>(nullable: false),
                     SegundoNombre = table.Column<string>(nullable: true),
                     PrimerApellido = table.Column<string>(nullable: false),

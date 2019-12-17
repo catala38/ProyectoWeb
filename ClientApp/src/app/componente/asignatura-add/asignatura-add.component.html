@@ -102,16 +102,12 @@
                     <label>Pre-Requisitos: </label>
                 </div>
                 <div class="col-sm-10">
-                    <select [(ngModel)]="asignatura.PreRequisitos" class="form-control" formControlName="PreRequisitos"
-                    [ngClass]="{ 'is-invalid': submitted && f.PreRequisitos.errors }">>
+                    <select class="form-control" formControlName="PreRequisitos">
                         <option selected="selected">
                             Seleccione...
                         </option>
                         <option *ngFor="let a of asignaturas" >{{a.nombre}}</option>
                     </select>
-                    <div *ngIf="submitted && f.PreRequisitos.errors"  class="invalid-feedback">
-                        <div *ngIf="f.PreRequisitos.errors.required">Por favor, Seleccione un PreRequisitos</div>
-                    </div>
                 </div>
             </div>
 
@@ -135,16 +131,13 @@
                     <label>Co-Requisitos: </label>
                 </div>
                 <div class="col-sm-10">
-                    <select [(ngModel)]="asignatura.CoRequisitos" class="form-control" formControlName="CoRequisitos"
-                    [ngClass]="{ 'is-invalid': submitted && f.CoRequisitos.errors }">>
+                    <select class="form-control" formControlName="CoRequisitos">
                         <option selected="selected">
                             Seleccione...
                         </option>
                         <option *ngFor="let a of asignaturas" >{{a.nombre}}</option>
                     </select>
-                    <div *ngIf="submitted && f.CoRequisitos.errors" class="invalid-feedback">
-                        <div *ngIf="f.CoRequisitos.errors.required">Por favor, Seleccione un Co-Requisitos</div>
-                    </div>
+                    
                 </div>
             </div>
 

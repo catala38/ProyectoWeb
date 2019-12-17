@@ -25,7 +25,7 @@ namespace ProyectoV2.Controllers
             {
 
 
-                _context.Docentes.Add(new Docente {Identificacion="77030926",PrimerNombre="LUCHO",PrimerApellido="catalan",SegundoApellido="santiago",Correo="yovaingeniero@gmail.com",Telefono="3107138302",Password="123",Rol="Docente",programaId=1  });
+                _context.Docentes.Add(new Docente {Identificacion="77030926",TipoId="Cedula de ciudadanía",PrimerNombre="LUCHO",PrimerApellido="catalan",SegundoApellido="santiago",Correo="yovaingeniero@gmail.com",Telefono="3107138302",Password="123",Rol="Docente",programaId=1  });
                 _context.SaveChanges();
             }
         }

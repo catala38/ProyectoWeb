@@ -16,10 +16,10 @@ namespace ProyectoV2.Models
         [Required]
         public string Ncreditos { get; set; }
 
-        [Required]
+      
         public string PreRequisitos { get; set; }
 
-        [Required]
+        
         public string CoRequisitos { get; set; }
 
         [Required]

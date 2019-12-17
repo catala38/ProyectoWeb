@@ -51,7 +51,8 @@ export class PlanAsignaturaComponent implements OnInit {
   }
 
   getEjes() {
-    this.ejeTematicoService.getAll().subscribe(ejeTematicos => this.ejeTematicos = ejeTematicos);
+    var num1 = ((document.getElementById("referencia") as HTMLInputElement).value);
+    this.ejeTematicoService.getEjesByAsignaturas(num1).subscribe(ejeTematicos => this.ejeTematicos = ejeTematicos);
   }
 
 }
