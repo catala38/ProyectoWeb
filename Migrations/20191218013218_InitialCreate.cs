@@ -2,7 +2,7 @@
 
 namespace ProyectoV2.Migrations
 {
-    public partial class SoftwareBD : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,8 +48,7 @@ namespace ProyectoV2.Migrations
                 name: "Programas",
                 columns: table => new
                 {
-                    programaId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    programaId = table.Column<string>(nullable: false),
                     nombrePro = table.Column<string>(nullable: true),
                     duracionSementral = table.Column<int>(nullable: false),
                     horario = table.Column<string>(nullable: true),
@@ -79,7 +78,7 @@ namespace ProyectoV2.Migrations
                     Tipo = table.Column<string>(nullable: false),
                     NatAsignatura1 = table.Column<string>(nullable: false),
                     NatAsignatura2 = table.Column<string>(nullable: false),
-                    programaId = table.Column<int>(nullable: false)
+                    programaId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -89,7 +88,7 @@ namespace ProyectoV2.Migrations
                         column: x => x.programaId,
                         principalTable: "Programas",
                         principalColumn: "programaId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -106,7 +105,7 @@ namespace ProyectoV2.Migrations
                     Telefono = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: true),
                     Rol = table.Column<string>(nullable: true),
-                    programaId = table.Column<int>(nullable: false)
+                    programaId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -116,7 +115,7 @@ namespace ProyectoV2.Migrations
                         column: x => x.programaId,
                         principalTable: "Programas",
                         principalColumn: "programaId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -211,6 +210,60 @@ namespace ProyectoV2.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ItemPlanesDesarrollo",
+                columns: table => new
+                {
+                    IdPlan = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EjeTematicoId = table.Column<int>(nullable: false),
+                    GrupoId = table.Column<int>(nullable: false),
+                    FechaInicio = table.Column<string>(nullable: true),
+                    FechaFin = table.Column<string>(nullable: true),
+                    Periodo = table.Column<string>(nullable: true),
+                    Ano = table.Column<string>(nullable: true),
+                    TrabajoIndependiente = table.Column<string>(nullable: true),
+                    Estrategias = table.Column<string>(nullable: true),
+                    Competencias = table.Column<string>(nullable: true),
+                    Referencias = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemPlanesDesarrollo", x => x.IdPlan);
+                    table.ForeignKey(
+                        name: "FK_ItemPlanesDesarrollo_EjeTematicos_EjeTematicoId",
+                        column: x => x.EjeTematicoId,
+                        principalTable: "EjeTematicos",
+                        principalColumn: "EjeId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ItemPlanesDesarrollo_Grupos_GrupoId",
+                        column: x => x.GrupoId,
+                        principalTable: "Grupos",
+                        principalColumn: "GrupoId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TemasIP",
+                columns: table => new
+                {
+                    TemaIPId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(nullable: false),
+                    ItemPlanDesarrolloIdPlan = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TemasIP", x => x.TemaIPId);
+                    table.ForeignKey(
+                        name: "FK_TemasIP_ItemPlanesDesarrollo_ItemPlanDesarrolloIdPlan",
+                        column: x => x.ItemPlanDesarrolloIdPlan,
+                        principalTable: "ItemPlanesDesarrollo",
+                        principalColumn: "IdPlan",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Asignaturas_programaId",
                 table: "Asignaturas",
@@ -242,6 +295,16 @@ namespace ProyectoV2.Migrations
                 column: "DocenteId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ItemPlanesDesarrollo_EjeTematicoId",
+                table: "ItemPlanesDesarrollo",
+                column: "EjeTematicoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemPlanesDesarrollo_GrupoId",
+                table: "ItemPlanesDesarrollo",
+                column: "GrupoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Programas_FacultadId",
                 table: "Programas",
                 column: "FacultadId");
@@ -250,6 +313,11 @@ namespace ProyectoV2.Migrations
                 name: "IX_Temas_EjeTematicoId",
                 table: "Temas",
                 column: "EjeTematicoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TemasIP_ItemPlanDesarrolloIdPlan",
+                table: "TemasIP",
+                column: "ItemPlanDesarrolloIdPlan");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -267,16 +335,22 @@ namespace ProyectoV2.Migrations
                 name: "Temas");
 
             migrationBuilder.DropTable(
-                name: "Grupos");
+                name: "TemasIP");
+
+            migrationBuilder.DropTable(
+                name: "ItemPlanesDesarrollo");
 
             migrationBuilder.DropTable(
                 name: "EjeTematicos");
 
             migrationBuilder.DropTable(
-                name: "Docentes");
+                name: "Grupos");
 
             migrationBuilder.DropTable(
                 name: "Asignaturas");
+
+            migrationBuilder.DropTable(
+                name: "Docentes");
 
             migrationBuilder.DropTable(
                 name: "Programas");

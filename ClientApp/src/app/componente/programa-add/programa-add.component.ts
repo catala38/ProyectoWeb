@@ -29,7 +29,7 @@ export class ProgramaAddComponent implements OnInit {
     this.facultad = new Facultad();
     this.programa = new Programa();
     this.registerForm = this.formBuilder.group({
-      programaId: [0, Validators.required],
+      programaId: ['', Validators.required],
       nombrePro: ['', [Validators.required, Validators.minLength(3)]],
       duracionSementral: [0, Validators.required],
       horario: ['', Validators.required],

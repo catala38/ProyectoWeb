@@ -8,6 +8,7 @@ namespace ProyectoV2.Models
     public class Asignatura
     {
         [Key]
+        [JsonProperty("AsignaturaId")]
         public string AsignaturaId { get; set; }
 
         [Required]
@@ -32,7 +33,7 @@ namespace ProyectoV2.Models
         [Required]
         public string NatAsignatura2 { get; set; }
        
-        public int programaId { get; set; }
+        public string programaId { get; set; }
 
 
         public Programa Programa { get; set; }

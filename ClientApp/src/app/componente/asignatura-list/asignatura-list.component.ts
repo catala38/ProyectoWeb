@@ -55,7 +55,7 @@ export class AsignaturaListComponent implements OnInit {
         this.asignaturas = result;
       });
     }else{
-      this.asignaturaService.getAsignaturasByProgramas(parseInt(num1)).subscribe(asignaturas => this.asignaturas = asignaturas);
+      this.asignaturaService.getAsignaturasByProgramas(num1).subscribe(asignaturas => this.asignaturas = asignaturas);
     }
    
     

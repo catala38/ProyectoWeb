@@ -53,8 +53,8 @@ cargas:CargaAcademica[];
 
   mostrar1(){
     var num1 = ((document.getElementById("referenciaP") as HTMLInputElement).value);
-    this.asignaturaService.getAsignaturasByProgramas(parseInt(num1)).subscribe(asignaturas => this.asignaturas = asignaturas);
-    this.docenteService.getDocentesByProgramas(parseInt(num1)).subscribe(docentes => this.docentes = docentes);
+    this.asignaturaService.getAsignaturasByProgramas(num1).subscribe(asignaturas => this.asignaturas = asignaturas);
+    this.docenteService.getDocentesByProgramas(num1).subscribe(docentes => this.docentes = docentes);
 
   }
 
@@ -65,7 +65,6 @@ cargas:CargaAcademica[];
       this.asignaturaService.get(asig)
         .subscribe(asignatura => {
           this.asignatura = asignatura
-    
         });
     }
   }

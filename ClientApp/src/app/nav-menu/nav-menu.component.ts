@@ -16,7 +16,9 @@ export class NavMenuComponent implements OnInit {
       $('#sidebarCollapse').on('click', function () {
           $('#sidebar').toggleClass('active');
       });
-  });
+   });
+  
+
   }
 
   constructor(private authorizeService: AuthService,

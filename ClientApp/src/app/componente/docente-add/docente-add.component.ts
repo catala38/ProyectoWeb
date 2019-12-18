@@ -51,7 +51,7 @@ export class DocenteAddComponent implements OnInit {
   mostrar() {
     var num1 = ((document.getElementById("referencia") as HTMLInputElement).value);
     if (num1 != "Seleccione...") {
-      this.programaService.get(parseInt(num1))
+      this.programaService.get(num1)
         .subscribe(programa => {
           this.programa = programa
           this.havePrograma = true;

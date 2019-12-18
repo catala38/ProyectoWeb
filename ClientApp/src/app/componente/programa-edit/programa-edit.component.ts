@@ -25,7 +25,7 @@ export class ProgramaEditComponent implements OnInit {
 
   get(): void {
     const id =
-      +this.route.snapshot.paramMap.get('id');
+      this.route.snapshot.paramMap.get('id');
     this.programaservice.get(id)
       .subscribe(hero => this.programa = hero);
   }

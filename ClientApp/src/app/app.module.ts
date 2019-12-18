@@ -41,6 +41,7 @@ import { AlertModalComponent } from './componente/alert-modal/alert-modal.compon
 import { LoginComponent } from './componentes/login/login.component';
 import { NavBarComponent } from './componente/nav-bar/nav-bar.component';
 import { EstudianteListComponent } from './componente/estudiante-list/estudiante-list.component';
+import { PlanDesarrolloAddComponent } from './componente/plan-desarrollo-add/plan-desarrollo-add.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { EstudianteListComponent } from './componente/estudiante-list/estudiante
     AlertModalComponent,
     LoginComponent,
     NavBarComponent,
-    EstudianteListComponent
+    EstudianteListComponent,
+    PlanDesarrolloAddComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

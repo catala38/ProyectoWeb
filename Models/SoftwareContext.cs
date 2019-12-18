@@ -14,12 +14,13 @@ namespace ProyectoV2.Models
         public DbSet<EjeTematico> EjeTematicos { get; set; }
         
         public DbSet<Tema> Temas { get; set; }
-
+          public DbSet<TemaIP> TemasIP { get; set; }
         public DbSet<Grupo> Grupos { get; set; }
         public DbSet<CargaAcademica> CargaAcademicas { get; set; }
         public DbSet<Estudiante> Estudiantes { get; set; }
 
         public DbSet<Administrador> Administradores { get; set; }
+          public DbSet<ItemPlanDesarrollo> ItemPlanesDesarrollo { get; set; }
     }
 }
 

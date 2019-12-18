@@ -25,6 +25,9 @@ import {AuthGuard} from './auth/auth.guard';
 import {LoginComponent} from './componentes/login/login.component';
 import { Login } from './models/login';
 import { EstudianteListComponent } from './componente/estudiante-list/estudiante-list.component';
+import { PlanDesarrolloAddComponent } from './componente/plan-desarrollo-add/plan-desarrollo-add.component';
+
+
 
 
  
@@ -136,6 +139,11 @@ const routes: Routes = [
   {
     path:'estudiante-lis',
     component:EstudianteListComponent,canActivate:[AuthGuard],data: { role: 'Docente' }
+  },
+
+  {
+    path:'planDesarrollo-add',
+    component:PlanDesarrolloAddComponent,canActivate:[AuthGuard],data: { role: 'Docente' }
   },
 
 

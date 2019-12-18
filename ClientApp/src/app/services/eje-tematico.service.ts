@@ -32,7 +32,7 @@ export class EjeTematicoService {
     );
   }
 
-  get(id: string): Observable<EjeTematico> {
+  get(id: number): Observable<EjeTematico> {
     const url = `${this.baseUrl + 'api/ejetematico'}/${id}`;
     return this.http.get<EjeTematico>(url).pipe(
       tap(_ => this.handleErrorService.log('datos enviados')),

@@ -24,7 +24,7 @@ namespace ProyectoV2.Controllers
             {
 
 
-                _context.Asignaturas.Add(new Asignatura {AsignaturaId="SS501",Nombre="programacion web",Ncreditos="3",PreRequisitos="prueba",CoRequisitos="prueba",Tipo="Teorico-Practica",NatAsignatura1="prueba",NatAsignatura2="prueba1",programaId=1});
+                _context.Asignaturas.Add(new Asignatura {AsignaturaId="SS501",Nombre="programacion web",Ncreditos="3",PreRequisitos="prueba",CoRequisitos="prueba",Tipo="Teorico-Practica",NatAsignatura1="prueba",NatAsignatura2="prueba1",programaId="01"});
                 _context.SaveChanges();
             }
         }
@@ -43,7 +43,7 @@ namespace ProyectoV2.Controllers
         
        [HttpGet("programa={ProgramaId}")]
         
-        public async Task<ActionResult<IEnumerable<Asignatura>>> GetAsignaturasByPrograma(int ProgramaId)
+        public async Task<ActionResult<IEnumerable<Asignatura>>> GetAsignaturasByPrograma(string ProgramaId)
         {
             return await _context.Asignaturas.Where(t=>t.programaId==ProgramaId).Include(t => t.Programa).ToListAsync();
         }

@@ -1,7 +1,7 @@
 import { Facultad } from "./facultad";
 
 export class Programa {
-    programaId: number;
+    programaId: string;
     facultad:Facultad;
     nombrePro: string;
     duracionSementral:number;

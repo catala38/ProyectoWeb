@@ -32,7 +32,7 @@ export class DocenteService {
     );
   }
 
-  getDocentesByProgramas(id:number): Observable<Docente[]> {
+  getDocentesByProgramas(id:string): Observable<Docente[]> {
     const url = `${this.baseUrl + 'api/docente'}/programa=${id}`;
     return this.http.get<Docente[]>(url).pipe(
       tap(_ => console.log('Se Consulta la información')),

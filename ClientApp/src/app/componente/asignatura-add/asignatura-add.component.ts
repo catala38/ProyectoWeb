@@ -59,10 +59,10 @@ export class AsignaturaAddComponent implements OnInit {
   mostrar() {
 
     var num1 = ((document.getElementById("referencia") as HTMLInputElement).value);
-    this.asignaturaService.getAsignaturasByProgramas(parseInt(num1)).subscribe(asignaturas => this.asignaturas = asignaturas);
+    this.asignaturaService.getAsignaturasByProgramas(num1).subscribe(asignaturas => this.asignaturas = asignaturas);
 
     if (num1 != "Seleccione...") {
-      this.programaService.get(parseInt(num1))
+      this.programaService.get(num1)
         .subscribe(programa => {
           this.programa = programa
           this.havePrograma = true;

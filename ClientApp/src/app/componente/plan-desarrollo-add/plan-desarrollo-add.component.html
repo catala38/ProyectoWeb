@@ -1,0 +1,156 @@
+<style>
+    .separar {
+        padding: 10px;
+    }
+
+    .panel-heading {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .btn {
+        float: right;
+    }
+</style>
+
+
+
+<div class="panel panel-primary" style="width:70%; margin:auto">
+    <br><br>
+    <div class="panel-heading">Registro de Asignaturas</div>
+    <br>
+    <div class="panel-body">
+
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Asignatura: </label>
+            </div>
+            <div class="col-sm-10">
+                <select class="form-control" (change)="mostrar()" id="referencia" name="referencia">
+                    <option selected="selected">
+                        Seleccione...
+                    </option>
+                    <option *ngFor="let a of grupos" [value]="a.grupoId">{{a.asignatura.nombre}}</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Periodo: </label>
+            </div>
+            <div class="col-sm-10">
+                <input [(ngModel)]="planDesarrollo.periodo" class="form-control" type="text" />
+            </div>
+        </div>
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Año: </label>
+            </div>
+            <div class="col-sm-10">
+                <input [(ngModel)]="planDesarrollo.ano" class="form-control" type="text" />
+            </div>
+        </div>
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Fecha de Inicio: </label>
+            </div>
+            <div class="col-sm-10">
+                <input class="form-control" id="initialDate" type="date" />
+            </div>
+        </div>
+
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Fecha de Fin: </label>
+            </div>
+            <div class="col-sm-10">
+                <input class="form-control" id="finalDate" type="date" />
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Ejes Tematicos: </label>
+                </div>
+                <div class="col-sm-10">
+                    <select class="form-control" (change)="mostrar2()" id="referencia2" name="referencia">
+                        <option selected="selected">
+                            Seleccione...
+                        </option>
+                        <option *ngFor="let e of ejes" [value]="e.ejeId">{{e.nombre}}</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Temas: </label>
+                </div>
+                <div class="col-sm-10">
+                    <select class="form-control" (change)="mostrar3()" id="referencia3" name="referencia">
+                        <option selected="selected">
+                            Seleccione...
+                        </option>
+                        <option *ngFor="let e of temas" [value]="e.temaId">{{e.nombre}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <button class="btn btn-primary" (click)="addTema()" style="background: rgb(101, 141, 20)">Agregar</button>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Trabajo Independiente: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="planDesarrollo.trabajoIndependiente" class="form-control" type="text" />
+                </div>
+            </div>
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Estrategias Metofologicas: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="planDesarrollo.estrategias" class="form-control" type="text" />
+                </div>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Competencias: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="planDesarrollo.competencias" class="form-control" type="text" />
+                </div>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Referencias: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="planDesarrollo.referencias" class="form-control" type="text" />
+                </div>
+            </div>
+
+
+
+
+            <div class="col-sm-2">
+                <button class="btn btn-primary"  (click)= "addItemPlan()" style="background: rgb(101, 141, 20)">Parcelar</button>
+            </div>
+
+        </div>
+    </div>
+</div>

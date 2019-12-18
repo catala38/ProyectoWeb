@@ -5,6 +5,9 @@ import { EjeTematicoService } from 'src/app/services/eje-tematico.service';
 import { EjeTematico } from 'src/app/models/eje-tematico';
 import { Asignatura } from 'src/app/models/asignatura';
 import { AsignaturaService } from 'src/app/services/asignatura.service';
+import * as $ from 'jquery';
+import { Action } from 'rxjs/internal/scheduler/Action';
+
 
 @Component({
   selector: 'app-eje-tematico-list',
@@ -23,7 +26,15 @@ asignatura:Asignatura;
 
   ngOnInit() {
     this.getAsignaturas();
-  }
+
+    $(document).ready(function () {
+      $('#Cerrar').on('click', function () {
+          $('#sidebar').toggleClass('active');
+          window.print();
+      });
+   });
+
+    }
 
   
   getEjesByAsignatura() {
@@ -37,7 +48,6 @@ asignatura:Asignatura;
 
   }
 
-
   getAsignatura()
 {
   var asig = ((document.getElementById("referencia") as HTMLInputElement).value);
@@ -45,6 +55,5 @@ asignatura:Asignatura;
   this.getEjesByAsignatura()
   
 }
-
 
 }

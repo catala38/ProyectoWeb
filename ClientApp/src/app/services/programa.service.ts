@@ -49,7 +49,7 @@ export class ProgramaService {
     );
   }
 
-  get(id: number): Observable<Programa> {
+  get(id: string): Observable<Programa> {
     const url = `${this.baseUrl + 'api/programa'}/${id}`;
     return this.http.get<Programa>(url).pipe(
       tap(_ => this.handleErrorService.log('datos enviados')),
@@ -65,8 +65,8 @@ export class ProgramaService {
   }
 
 
-  delete(programa: Programa | number): Observable<Programa> {
-    const id = typeof programa === 'number' ? programa : programa.programaId;
+  delete(programa: Programa | string): Observable<Programa> {
+    const id = typeof programa === 'string' ? programa : programa.programaId;
     const url = `${this.baseUrl + 'api/programa'}/${id}`;
 
     return this.http.delete<Programa>(url, httpOptions).pipe(

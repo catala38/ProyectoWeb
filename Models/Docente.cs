@@ -31,7 +31,7 @@ namespace ProyectoV2.Models
 
         public string Rol { get; set; }
 
-        public int programaId { get; set; }
+        public string programaId { get; set; }
 
         public Programa Programa { get; set; }
     }

@@ -25,7 +25,7 @@ namespace ProyectoV2.Controllers
             {
 
 
-                _context.Docentes.Add(new Docente {Identificacion="77030926",TipoId="Cedula de ciudadanía",PrimerNombre="LUCHO",PrimerApellido="catalan",SegundoApellido="santiago",Correo="yovaingeniero@gmail.com",Telefono="3107138302",Password="123",Rol="Docente",programaId=1  });
+                _context.Docentes.Add(new Docente {Identificacion="77030926",TipoId="Cedula de ciudadanía",PrimerNombre="LUCHO",PrimerApellido="catalan",SegundoApellido="santiago",Correo="yovaingeniero@gmail.com",Telefono="3107138302",Password="123",Rol="Docente",programaId="01 " });
                 _context.SaveChanges();
             }
         }
@@ -69,7 +69,7 @@ namespace ProyectoV2.Controllers
 
 
         [HttpGet("Programa={ProgramaId}")]
-        public async Task<ActionResult<IEnumerable<Docente>>> GetDocentesByProgramas(int programaId)
+        public async Task<ActionResult<IEnumerable<Docente>>> GetDocentesByProgramas(string programaId)
         {
             return await _context.Docentes.Where(t=>t.programaId==programaId).Include(t =>t.Programa).ToListAsync();
         }

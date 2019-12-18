@@ -2,7 +2,7 @@ import { Programa } from "./programa";
 
 export class Asignatura {
 
-    AsignaturaId :string;
+    asignaturaId :string;
     Nombre:string;
     Ncreditos :string;
     PreRequisitos :string;

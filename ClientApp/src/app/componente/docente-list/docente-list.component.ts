@@ -35,7 +35,7 @@ export class DocenteListComponent implements OnInit {
 
   mostrar() {
     var num1 = ((document.getElementById("referencia") as HTMLInputElement).value);
-    this.docenteService.getDocentesByProgramas(parseInt(num1)).subscribe(docentes => this.docentes = docentes);
+    this.docenteService.getDocentesByProgramas(num1).subscribe(docentes => this.docentes = docentes);
 
   }
 

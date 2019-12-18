@@ -31,7 +31,7 @@ export class AsignaturaService {
       catchError(this.handleError<Asignatura[]>('getAll', []))
     );
   }
-  getAsignaturasByProgramas(id:number): Observable<Asignatura[]> {
+  getAsignaturasByProgramas(id:string): Observable<Asignatura[]> {
     const url = `${this.baseUrl + 'api/asignatura'}/programa=${id}`;
     return this.http.get<Asignatura[]>(url).pipe(
       tap(_ => console.log('Se Consulta la información')),
@@ -47,16 +47,16 @@ export class AsignaturaService {
     );
   }
   update(asignatura: Asignatura): Observable<any> {
-    const url = `${this.baseUrl + 'api/asignatura'}/${asignatura.AsignaturaId}`;
+    const url = `${this.baseUrl + 'api/asignatura'}/${asignatura.asignaturaId}`;
     return this.http.put(url, asignatura, httpOptions).pipe(
-      tap(_ => this.log(`se modificó la Asignatura con id=${asignatura.AsignaturaId}`)),
+      tap(_ => this.log(`se modificó la Asignatura con id=${asignatura.asignaturaId}`)),
       catchError(this.handleError<any>('cliente'))
     );
   }
 
 
   delete(asignatura: Asignatura | string): Observable<Asignatura> {
-    const id = typeof asignatura === 'string' ? asignatura : asignatura.AsignaturaId;
+    const id = typeof asignatura === 'string' ? asignatura : asignatura.asignaturaId;
     const url = `${this.baseUrl + 'api/asignatura'}/${id}`;
 
     return this.http.delete<Asignatura>(url, httpOptions).pipe(

@@ -47,7 +47,7 @@ export class PlanAsignaturaComponent implements OnInit {
   
   mostrar1(){
     var num1 = ((document.getElementById("referencia1") as HTMLInputElement).value);
-    this.asignaturaService.getAsignaturasByProgramas(parseInt(num1)).subscribe(asignaturas => this.asignaturas = asignaturas);
+    this.asignaturaService.getAsignaturasByProgramas(num1).subscribe(asignaturas => this.asignaturas = asignaturas);
   }
 
   getEjes() {

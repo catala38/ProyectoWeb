@@ -6,7 +6,7 @@ namespace ProyectoV2.Models
     public class Programa
     {
         [Key]
-        public int programaId { get; set; }
+        public string programaId { get; set; }
         
         public string nombrePro { get; set; }        
         public int duracionSementral { get; set; }

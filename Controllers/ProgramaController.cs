@@ -22,7 +22,7 @@ namespace ProyectoV2.Controllers
 
             if (_context.Programas.Count() == 0)
 
-                _context.Programas.Add(new Programa { FacultadId = 1, nombrePro = "SISTEMAS", duracionSementral = 0, horario = "Normal", metodologia = "dinamica" });
+                _context.Programas.Add(new Programa { FacultadId = 1, programaId="01",nombrePro = "SISTEMAS", duracionSementral = 0, horario = "Normal", metodologia = "dinamica" });
             _context.SaveChanges();
         }
 
@@ -50,7 +50,7 @@ namespace ProyectoV2.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Programa>> GetProgramaItem(int id)
+        public async Task<ActionResult<Programa>> GetProgramaItem1(string id)
         {
             var programa = await _context.Programas
             .Include(t => t.Facultad)
@@ -88,7 +88,7 @@ namespace ProyectoV2.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProgramaItem(int id, Programa item)
+        public async Task<IActionResult> PutProgramaItem(string id, Programa item)
         {
             if (id != item.programaId)
             {
@@ -103,7 +103,7 @@ namespace ProyectoV2.Controllers
 
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProgramaItem(int id)
+        public async Task<IActionResult> DeleteProgramaItem(string id)
         {
             var programa = await
             _context.Programas.FindAsync(id);

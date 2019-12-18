@@ -20,6 +20,21 @@
                 </div>
             </div>
 
+            
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Codigo: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="programa.programaId" formControlName="programaId" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.programaId.errors }" placeholder="digite codigo"
+                        type="text" />
+                    <div *ngIf="submitted && f.programaId.errors" class="invalid-feedback">
+                        <div *ngIf="f.programaId.errors.required">Codigo es requerido</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row separar">
                 <div class="col-sm-2">
                     <label>Programa: </label>
