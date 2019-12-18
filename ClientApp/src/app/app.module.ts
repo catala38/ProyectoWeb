@@ -42,6 +42,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { NavBarComponent } from './componente/nav-bar/nav-bar.component';
 import { EstudianteListComponent } from './componente/estudiante-list/estudiante-list.component';
 import { PlanDesarrolloAddComponent } from './componente/plan-desarrollo-add/plan-desarrollo-add.component';
+import { PlanDesarrolloListComponent } from './componente/plan-desarrollo-list/plan-desarrollo-list.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { PlanDesarrolloAddComponent } from './componente/plan-desarrollo-add/pla
     LoginComponent,
     NavBarComponent,
     EstudianteListComponent,
-    PlanDesarrolloAddComponent
+    PlanDesarrolloAddComponent,
+    PlanDesarrolloListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

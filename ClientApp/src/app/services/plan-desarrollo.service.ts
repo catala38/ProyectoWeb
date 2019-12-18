@@ -41,6 +41,14 @@ export class PlanDesarrolloService {
     );
   }
 
+  getPlanesByGrupo(id:number): Observable<ItemPlanDesarrollo[]> {
+    const url = `${this.baseUrl + 'api/ItemPlanDesarrollo'}/grupo=${id}`;
+    return this.http.get<ItemPlanDesarrollo[]>(url).pipe(
+      tap(_ => console.log('Se Consulta la información')),
+      catchError(this.handleError<ItemPlanDesarrollo[]>('getAll', []))
+    );
+  }
+
   update(itemPlanDesarrollo: ItemPlanDesarrollo): Observable<any> {
     const url = `${this.baseUrl + 'api/ItemPlanDesarrollo'}/${itemPlanDesarrollo.idPlan}`;
     return this.http.put(url, itemPlanDesarrollo, httpOptions).pipe(

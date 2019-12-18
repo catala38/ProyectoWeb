@@ -32,7 +32,7 @@
                     <option selected="selected">
                         Seleccione...
                     </option>
-                    <option *ngFor="let a of grupos" [value]="a.grupoId">{{a.asignatura.nombre}}</option>
+                    <option *ngFor="let a of grupos" [value]="a.grupoId">{{a.asignatura.nombre}} Grupo {{a.numero}}</option>
                 </select>
             </div>
         </div>
@@ -43,9 +43,16 @@
                 <label>Periodo: </label>
             </div>
             <div class="col-sm-10">
-                <input [(ngModel)]="planDesarrollo.periodo" class="form-control" type="text" />
+                <select [(ngModel)]="planDesarrollo.periodo" class="form-control">
+                          <option value="">Seleccionar</option>
+                    <option value="Periodo1">Periodo 1</option>
+                    <option value="Periodo2">Periodo 2</option>
+                </select>
+                    
             </div>
         </div>
+
+
 
         <div class="row separar">
             <div class="col-sm-2">
@@ -73,6 +80,7 @@
             <div class="col-sm-10">
                 <input class="form-control" id="finalDate" type="date" />
             </div>
+        </div>
 
             <div class="row separar">
                 <div class="col-sm-2">
@@ -100,11 +108,11 @@
                         </option>
                         <option *ngFor="let e of temas" [value]="e.temaId">{{e.nombre}}</option>
                     </select>
-                </div>
-            </div>
+                    <br>
+                    <button class="btn btn-primary" (click)="addTema()" style="background: rgb(101, 141, 20)">Agregar</button>
 
-            <div class="col-sm-2">
-                <button class="btn btn-primary" (click)="addTema()" style="background: rgb(101, 141, 20)">Agregar</button>
+                </div>
+                
             </div>
 
             <div class="row separar">
@@ -141,16 +149,11 @@
                 </div>
                 <div class="col-sm-10">
                     <input [(ngModel)]="planDesarrollo.referencias" class="form-control" type="text" />
+                    <br>
+                    <button class="btn btn-primary"  (click)= "addItemPlan()" style="background: rgb(101, 141, 20)">Parcelar</button>
+
                 </div>
             </div>
 
-
-
-
-            <div class="col-sm-2">
-                <button class="btn btn-primary"  (click)= "addItemPlan()" style="background: rgb(101, 141, 20)">Parcelar</button>
-            </div>
-
-        </div>
     </div>
 </div>

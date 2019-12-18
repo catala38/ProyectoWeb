@@ -6,6 +6,8 @@ import { DocenteService } from 'src/app/services/docente.service';
 import { Facultad } from 'src/app/models/facultad';
 import { isUndefined } from 'util';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertModalComponent } from '../alert-modal/alert-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-docente-add',
@@ -21,18 +23,19 @@ export class DocenteAddComponent implements OnInit {
   facultad: Facultad;
   havePrograma: boolean;
 
-  constructor(private docenteService: DocenteService, private programaService: ProgramaService, private formBuilder: FormBuilder) { }
+  constructor(private docenteService: DocenteService, private programaService: ProgramaService, private formBuilder: FormBuilder,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.programa = new Programa();
     this.docente = new Docente();
     this.registerForm = this.formBuilder.group({
-      identificacion: [this.docente.identificacion, [Validators.required, Validators.minLength(10)]],
+      identificacion: [this.docente.identificacion, [Validators.required, Validators.minLength(8)]],
       tipoId:[this.docente.tipoId, Validators.required],
       primerNombre: [this.docente.primerNombre, [Validators.required, Validators.minLength(3)]],
-      segundoNombre: this.docente.segundoNombre, 
-      primerApellido: [this.docente.primerNombre, [Validators.required, Validators.minLength(3)]],
-      segundoApellido: this.docente.segundoNombre,
+      segundoNombre: [this.docente.segundoNombre ], 
+      primerApellido: [this.docente.primerApellido, [Validators.required, Validators.minLength(3)]],
+      segundoApellido: [this.docente.segundoApellido, [Validators.required]],
       correo: [this.docente.correo, [Validators.required, Validators.email]],
       telefono: [this.docente.telefono, Validators.required],
       password: [this.docente.password = "123"],
@@ -66,7 +69,14 @@ export class DocenteAddComponent implements OnInit {
     if (this.havePrograma) {
       this.docenteService.
         addDocente(this.docente).subscribe();
-    }
+        const messageBox = this.modalService.open(AlertModalComponent)
+          messageBox.componentInstance.title = "Resultado Operación";
+          messageBox.componentInstance.message = 'Docente guardado con exito';
+        } else {
+          const messageBox = this.modalService.open(AlertModalComponent)
+          messageBox.componentInstance.title = "Resultado Operación";
+          messageBox.componentInstance.message = 'error no se pudo guardar el docente';
+        }
 
   }
 

@@ -21,23 +21,23 @@ import { TemaIP } from 'src/app/models/tema-ip';
 export class PlanDesarrolloAddComponent implements OnInit {
   docente: Docente;
   id: string;
-  temaIP:TemaIP;
+  temaIP: TemaIP;
   grupo: Grupo;
   grupos: Grupo[];
   planDesarrollo: ItemPlanDesarrollo;
   ejes: EjeTematico[];
-  temas:Tema[];
-  eje:EjeTematico;
+  temas: Tema[];
+  eje: EjeTematico;
   asignatura: Asignatura;
-  tema:Tema;
+  tema: Tema;
 
-  constructor(private docenteService: DocenteService,private planDesarrolloService:PlanDesarrolloService,private temaService:TemaService, private grupoService: GrupoService, private ejeService: EjeTematicoService) { }
+  constructor(private docenteService: DocenteService, private planDesarrolloService: PlanDesarrolloService, private temaService: TemaService, private grupoService: GrupoService, private ejeService: EjeTematicoService) { }
   ngOnInit() {
     this.grupos = [];
     this.planDesarrollo = new ItemPlanDesarrollo();
-    this.planDesarrollo.temasIP=[];
+    this.planDesarrollo.temasIP = [];
     this.ejes = [];
-  
+
     this.id = sessionStorage.getItem('user');
     this.getCurrentDocente();
     this.getGrupos();
@@ -47,7 +47,7 @@ export class PlanDesarrolloAddComponent implements OnInit {
     console.log(this.asignatura);
     this.ejeService.getEjesByAsignaturas(this.asignatura.asignaturaId).subscribe(ejes => {
       this.ejes = ejes;
-      
+
 
     });
 
@@ -58,30 +58,31 @@ export class PlanDesarrolloAddComponent implements OnInit {
     if (num1 != "Seleccione...") {
       this.ejeService.get(parseInt(num1))
         .subscribe(eje => {
-          this.eje=eje;
-          this.temas=eje.temas;
+          this.eje = eje;
+          this.temas = eje.temas;
           console.log(this.temas);
         });
     }
   }
-  mostrar3(){
+  mostrar3() {
     var num1 = ((document.getElementById("referencia3") as HTMLInputElement).value);
     console.log(num1);
     if (num1 != "Seleccione...") {
       this.temaService.get(parseInt(num1))
         .subscribe(tema => {
-          this.tema=tema;
+          this.tema = tema;
           console.log(tema);
         });
     }
-   
+
   }
-addTema(){
-  this.temaIP=new TemaIP();
-this.temaIP.temaIPId=0;
-  this.temaIP.nombre=this.tema.nombre;
-  this.planDesarrollo.temasIP.push(this.temaIP);
-}
+  addTema() {
+    this.temaIP = new TemaIP();
+    this.temaIP.temaIPId = 0;
+    this.temaIP.nombre = this.tema.nombre;
+    this.planDesarrollo.temasIP.push(this.temaIP);
+    alert("tema agregado");
+  }
   mostrar() {
     var num1 = ((document.getElementById("referencia") as HTMLInputElement).value);
     if (num1 != "Seleccione...") {
@@ -94,11 +95,12 @@ this.temaIP.temaIPId=0;
   }
   addItemPlan() {
     this.planDesarrollo.grupo = this.grupo;
-    this.planDesarrollo.ejeTematico=this.eje;
-    this.planDesarrollo.fechaFin= (document.getElementById("finalDate") as HTMLInputElement).value;
-    this.planDesarrollo.fechaInicio= (document.getElementById("initialDate") as HTMLInputElement).value;
+    this.planDesarrollo.ejeTematico = this.eje;
+    this.planDesarrollo.fechaFin = (document.getElementById("finalDate") as HTMLInputElement).value;
+    this.planDesarrollo.fechaInicio = (document.getElementById("initialDate") as HTMLInputElement).value;
     console.log(this.planDesarrollo);
     this.planDesarrolloService.addItemPlanDesarrollo(this.planDesarrollo).subscribe();
+    alert("Asignatura parcelada");
   }
   getCurrentDocente() {
     this.docenteService.get(this.id).subscribe(rest => {

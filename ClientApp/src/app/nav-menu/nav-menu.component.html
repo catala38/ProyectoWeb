@@ -99,9 +99,21 @@
           <li>
             <a [routerLink]='["estudiante-lis"]'>Consultar Estudiantes</a>
           </li>
-
         </ul>
       </li>
+
+      <li class="active" *ngIf="isAuthenticatedRole('Docente')">
+        <a href="#pageSubmenu6" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Plan de Desarrollo</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu6">
+          <li>
+            <a [routerLink]='["planDesarrollo-add"]'> Registrar Plan de Desarrollo</a>
+          </li>
+          <li>
+            <a [routerLink]='["planDesarrollo-list"]'>Consultar Plan de Desarrollo</a>
+          </li>
+        </ul>
+      </li>
+
     </ul>
 
     <ul class="list-unstyled components" *ngIf="!isAuthenticated()">

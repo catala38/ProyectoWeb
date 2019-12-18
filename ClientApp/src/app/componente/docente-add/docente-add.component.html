@@ -13,130 +13,157 @@
         float: right;
     }
 </style>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="panel panel-primary" style="width:70%; margin:auto">
+        <br><br>
+        <div class="panel-heading">Registro de Docentes</div>
+        <br>
 
-<div class="panel panel-primary" style="width:70%; margin:auto">
-    <br><br>
-    <div class="panel-heading">Registro de Docentes</div>
-    <br>
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Programa: </label>
+            </div>
+            <div class="col-sm-10">
+                <select class="form-control" (change)="mostrar()" id="referencia" name="referencia">
+                    <option selected="selected">
+                        Seleccione...
+                    </option>
+                    <option *ngFor="let p of programas" [value]="p.programaId">{{p.nombrePro}}</option>
+                </select>
+            </div>
+        </div>
 
-    <div class="row separar">
-        <div class="col-sm-2">
-            <label>Programa: </label>
-        </div>
-        <div class="col-sm-10">
-            <select class="form-control" (change)="mostrar()" id="referencia" name="referencia">
-                <option selected="selected">
-                    Seleccione...
-                </option>
-                <option *ngFor="let p of programas" [value]="p.programaId">{{p.nombrePro}}</option>
-            </select>
-        </div>
-    </div>
 
-    
-    <div class="row separar">
-        <div class="col-sm-2">
-            <label>Tipo de identificacion: </label>
-        </div>
-        <div class="col-sm-10">
-            <select [(ngModel)]="docente.tipoId" class="form-control" name="tipoId"
-                [ngClass]="{ 'is-invalid': submitted && f.tipoId.errors }">
-                      <option value="">Seleccionar</option>
-                <option value="Cedula de ciudadanía">(CC) Cedula de ciudadanía</option>
-                <option value="Cedula Extranjera">(CE) Cedula Extranjera</option>
-                <option value="Pasaporte">(PA) Pasaporte</option>
-                <option value="Registro Civil">(RC) Registro Civil</option>
-            </select>
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Tipo de identificacion: </label>
+            </div>
+            <div class="col-sm-10">
+                <select [(ngModel)]="docente.tipoId" class="form-control" formControlName="tipoId"
+                    [ngClass]="{ 'is-invalid': submitted && f.tipoId.errors }">
+                    <option value="">Seleccionar</option>
+                    <option value="Cedula de ciudadanía">(CC) Cedula de ciudadanía</option>
+                    <option value="Cedula Extranjera">(CE) Cedula Extranjera</option>
+                    <option value="Pasaporte">(PA) Pasaporte</option>
+                    <option value="Registro Civil">(RC) Registro Civil</option>
+                </select>
                 <div *ngIf="submitted && f.tipoId.errors" class="invalid-feedback">
-                    <div *ngIf="f.tipoId.errors.required">Por favor, Seleccione un Tipo de identificacion</div>
+                    <div *ngIf="f.tipoId.errors.required">Por favor, Seleccione un tipo</div>
                 </div>
+            </div>
+        </div>
+
+
+        <div class="panel-body">
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Numero de Identificacion: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="docente.identificacion" class="form-control" 
+                     formControlName="identificacion" placeholder="Digite identificacion"
+                     [ngClass]="{ 'is-invalid': submitted && f.identificacion.errors }"  type="text"  class="form-control">
+                     <div *ngIf="submitted && f.identificacion.errors" class="invalid-feedback">
+                        <div *ngIf="f.identificacion.errors.required">Identificacion es requerido</div>
+                        <div *ngIf="f.identificacion.errors.minlength">Codigo requiere minimo 8 caracteres</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Primer Nombre: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="docente.primerNombre" class="form-control" placeholder="Digite primer nombre"
+                    formControlName="primerNombre"
+                    [ngClass]="{ 'is-invalid': submitted && f.primerNombre.errors }" type="text"  class="form-control">
+                    <div *ngIf="submitted && f.primerNombre.errors" class="invalid-feedback">
+                        <div *ngIf="f.primerNombre.errors.required">Primer Nombre es requerido</div>
+                        <div *ngIf="f.primerNombre.errors.minlength">Primer Nombre requiere minimo 3 caracteres</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Segundo Nombre: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="docente.segundoNombre" class="form-control" placeholder="Digite segundo nombre"
+                        type="text"  class="form-control">
+                </div>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Primer Apellido: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="docente.primerApellido" class="form-control" formControlName="primerApellido"
+                    [ngClass]="{ 'is-invalid': submitted && f.primerApellido.errors }"
+                        placeholder="Digite primer Apellido" type="text"  class="form-control">
+                        <div *ngIf="submitted && f.primerApellido.errors" class="invalid-feedback">
+                            <div *ngIf="f.primerApellido.errors.required">primerApellido es requerido</div>
+                            <div *ngIf="f.primerApellido.errors.minlength">primerApellido requiere minimo 3 caracteres</div>
+                        </div>
+                </div>
+            </div>
+
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Segundo Apellido: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="docente.segundoApellido" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.segundoApellido.errors }" formControlName="segundoApellido"
+                        placeholder="Digite segundo Apellido" type="text"  class="form-control">
+                        <div *ngIf="submitted && f.segundoApellido.errors" class="invalid-feedback">
+                            <div *ngIf="f.segundoApellido.errors.required">segundoApellido es requerido</div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Correo: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="docente.correo" type="text" formControlName="correo" class="form-control" 
+                    [ngClass]="{ 'is-invalid': submitted && f.correo.errors }"/>
+                    <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
+                        <div *ngIf="f.correo.errors.required">El correo es requerido</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                    <label>Telefono: </label>
+                </div>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="docente.telefono" class="form-control" placeholder="Digite telefono" type="text"
+                    formControlName="telefono" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" >
+                        <div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
+                            <div *ngIf="f.telefono.errors.required">telefono es requerido</div>
+                            <div *ngIf="f.telefono.errors.minlength">telefono requiere minimo 10 caracteres</div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="row separar">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-10">
+                    <button  class="btn btn-primary">Agregar</button>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
-
-
-    <div class="panel-body">
-        <div class="row separar">
-            <div class="col-sm-2">
-                <label>Numero de Identificacion: </label>
-            </div>
-            <div class="col-sm-10">
-                <input [(ngModel)]="docente.identificacion" class="form-control" placeholder="Digite identificacion"
-                    type="text" required class="form-control">
-            </div>
-        </div>
-
-        <div class="row separar">
-            <div class="col-sm-2">
-                <label>Primer Nombre: </label>
-            </div>
-            <div class="col-sm-10">
-                <input [(ngModel)]="docente.primerNombre" class="form-control" placeholder="Digite primer nombre"
-                    type="text" required class="form-control">
-            </div>
-        </div>
-
-
-        <div class="row separar">
-            <div class="col-sm-2">
-                <label>Segundo Nombre: </label>
-            </div>
-            <div class="col-sm-10">
-                <input [(ngModel)]="docente.segundoNombre" class="form-control" placeholder="Digite segundo nombre"
-                    type="text" required class="form-control">
-            </div>
-        </div>
-
-        <div class="row separar">
-            <div class="col-sm-2">
-                <label>Primer Apellido: </label>
-            </div>
-            <div class="col-sm-10">
-                <input [(ngModel)]="docente.primerApellido" class="form-control" placeholder="Digite primer Apellido"
-                    type="text" required class="form-control">
-            </div>
-        </div>
-
-
-        <div class="row separar">
-            <div class="col-sm-2">
-                <label>Segundo Apellido: </label>
-            </div>
-            <div class="col-sm-10">
-                <input [(ngModel)]="docente.segundoApellido" class="form-control" placeholder="Digite segundo Apellido"
-                    type="text" required class="form-control">
-            </div>
-        </div>
-
-        <div class="row separar">
-            <div class="col-sm-2">
-                <label>Correo: </label>
-            </div>
-            <div class="col-sm-10">
-                <input [(ngModel)]="docente.correo" class="form-control" placeholder="Digite correo" type="text"
-                    required class="form-control">
-            </div>
-        </div>
-
-        <div class="row separar">
-            <div class="col-sm-2">
-                <label>Telefono: </label>
-            </div>
-            <div class="col-sm-10">
-                <input [(ngModel)]="docente.telefono" class="form-control" placeholder="Digite telefono" type="text"
-                    required class="form-control">
-
-            </div>
-        </div>
-
-        <div class="row separar">
-            <div class="col-sm-2">
-            </div>
-            <div class="col-sm-10">
-                <button (click)="add()" class="btn btn-primary">Agregar</button>
-            </div>
-        </div>
-
-
-
-    </div>
-</div>
+</form>

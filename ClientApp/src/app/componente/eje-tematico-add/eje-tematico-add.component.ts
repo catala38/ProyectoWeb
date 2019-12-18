@@ -47,18 +47,19 @@ temas:Tema[];
     if (this.tema.nombre!="") {
       const messageBox = this.modalService.open(AlertModalComponent)
       messageBox.componentInstance.title = "Resultado Operación";
-      messageBox.componentInstance.message = 'guardada con exito';
+      messageBox.componentInstance.message = 'tema registrado con exito';
       this.temaService.addTema(this.tema);
       this.getTemas();
 
     } else {
       const messageBox = this.modalService.open(AlertModalComponent)
       messageBox.componentInstance.title = "Resultado Operación";
-      messageBox.componentInstance.message = 'No se pudo guardar ';
+      messageBox.componentInstance.message = 'No se pudo registrar su tema ';
     }
     
     
   }
+
   addEje(){
     this.getTemas();
 
@@ -69,7 +70,7 @@ temas:Tema[];
     
       sessionStorage.removeItem("temas")
       this.getTemas();
-      
+      alert("Plan semanal guardado con exito")
     });
    
   }

@@ -1,0 +1,221 @@
+<style>
+    .separar {
+        padding: 10px;
+    }
+
+    .panel-heading {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .btn {
+        float: right;
+    }
+</style>
+
+
+<div class="panel panel-primary" style="width:70%; margin:auto">
+    <br><br>
+    <div class="panel-heading">Consulta de Grupos</div>
+    <br>
+    <div class="panel-body">
+        
+        <button  (click)="Cerrar()"  id="Cerrar" class="btn btn-success" >
+            <i class="fas fa-align-left"></i>
+            IMPRIMIR
+        </button>
+
+        <div class="row separar">
+            <div class="col-sm-2">
+                <label>Asignatura: </label>
+            </div>
+            <div class="col-sm-10">
+                <select class="form-control" (change)="getPlan()" id="referencia" name="referencia">
+                    <option selected="selected">
+                        Seleccione...
+                    </option>
+                    <option *ngFor="let a of grupos" [value]="a.grupoId">{{a.asignatura.nombre}} Grupo {{a.numero}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+
+        <table border="0.5" style="width: 80%;">
+            <tbody>
+                <tr>
+                    <td>
+                        <p>&nbsp;</p>
+                        <table border="1" style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td rowspan="3">
+                                        <p><br>&nbsp;<img
+                                                src="https://s3-eu-west-1.amazonaws.com/froala-eu/temp_files%2F1576648106327-1576648106327.png"
+                                                class="fr-fic fr-dib"></p>
+                                    </td>
+                                    <td rowspan="2">
+                                        <p><strong>UNIVERSIDAD POPULAR DEL CESAR</strong></p>
+                                    </td>
+                                    <td>
+                                        <p>CODIGO: 201-300-PRO05-FOR02</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>VERSI&Oacute;N: 1</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>PLAN DESARROLLO DE ASIGNATURA</p>
+                                    </td>
+                                    <td>
+                                        <p>P&Aacute;G.: <strong>1</strong> de <strong>6</strong></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <table align="center" border="1" style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3">
+                                        <p><strong>APELLIDOS Y NOMBRES DEL DOCENTE</strong></p>
+                                    </td>
+                                    <td colspan="3">
+                                        <p>{{docente.primerNombre}} {{docente.segundoNombre}} {{docente.PrimerApellido}}
+                                            {{docente.segundoApellido}} </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <p><strong>CORREO ELECTR&Oacute;NICO</strong></p>
+                                    </td>
+                                    <td colspan="3">
+                                        <p>{{docente.correo}}</p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <p><strong>A&Ntilde;O LECTIVO: 2019</strong></p>
+                                    </td>
+                                    <td colspan="5">
+                                        <p><strong>PER&Iacute;ODO ACAD&Eacute;MICO: &nbsp;II</strong></p>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <br>
+
+
+                        <table border="1" style="width: 100%; text-align: center;" *ngFor="let p of planes">
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" valign="top">
+                                        <p><strong>TRABAJO INDEPENDIENTE: {{p.trabajoIndependiente}}</strong></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" valign="top">
+                                        <p><strong>ESTRATEGIAS METODOL&Oacute;GICAS: {{p.estrategias}}&nbsp;</strong>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" valign="top">
+                                        <p><strong>COMPETENCIAS: {{p.competencias}}</strong></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" valign="top">
+                                        <p><strong>REFERENCIAS: {{p.referencias}}</strong></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" valign="top">
+                                        <p><strong>FECHA DE INICIO: {{p.fechaInicio}}</strong></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" valign="top">
+                                        <p><strong>FECHA FINAL: {{p.fechaFin}}</strong></p>
+                                    </td>
+                                </tr>
+
+                                <table align="center" border="1" style="width: 100%;">
+                                    <thead class="thead-striped">
+                                        <tr>
+                                            <th scope="col">EJES TEMATICOS</th>
+                                            <th scope="col">TEMAS DE DOCENCIA DIRECTA</th>
+                                        </tr>
+                                    </thead>
+                                    <tr *ngFor="let p of planes">
+                                        <td>{{p.ejeTematico.nombre}}</td>
+                                        <td>
+                                    <tr *ngFor="let t of p.temasIP">
+                                        <td>{{t.nombre}}</td>
+                                    </tr>
+                    </td>
+                </tr>
+
+        </table>
+        </tbody>
+        </table>
+
+
+        </td>
+        </tr>
+        </tbody>
+        </table>
+
+        <!--<table style="text-align: center;" class="table table-bordered">
+                <thead class="thead-striped">
+                    <tr>
+                        <th scope="col">Periodo</th>
+                        <th scope="col">Año</th>
+                        <th scope="col">FechaInicio</th>
+                        <th scope="col">FechaFin</th>
+                        <th scope="col">TrabajoIndependiente</th>
+                        <th scope="col">Estrategias</th>
+                        <th scope="col">Competencias</th>
+                        <th scope="col">Referencias</th>
+                        <th scope="col">Ejes Tematicos</th>
+                        <th scope="col">Temas</th>
+
+
+                    </tr>
+                </thead>
+
+                <tr *ngFor="let p of planes">
+
+                    <td>{{p.periodo}}</td>
+                    <td>{{p.ano}}</td>
+                    <td>{{p.fechaInicio}}</td>
+                    <td>{{p.fechaFin}}</td>
+                    <td>{{p.trabajoIndependiente}}</td>
+                    <td>{{p.estrategias}}</td>
+                    <td>{{p.competencias}}</td>
+                    <td>{{p.referencias}}</td>
+                    <td>{{p.ejeTematico.nombre}}</td>
+                <td>
+                <tr *ngFor="let t of p.temasIP">
+                    <td>{{t.nombre}}</td>
+                </tr>
+                </td>
+                </tr>
+
+            </table>-->
+
+
+
+
+
+
+
+
+    </div>
+</div>

@@ -40,4 +40,3 @@ export class DocenteListComponent implements OnInit {
   }
 
 }
-

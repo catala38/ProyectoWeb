@@ -10,7 +10,7 @@ using ProyectoV2.Models;
 namespace ProyectoV2.Migrations
 {
     [DbContext(typeof(SoftwareContext))]
-    [Migration("20191218013218_InitialCreate")]
+    [Migration("20191218150448_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
